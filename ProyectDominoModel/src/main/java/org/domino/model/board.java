@@ -1,5 +1,5 @@
 //Clase tablero
-package org.domino.dominio;
+package org.domino.model;
 
 /**
  *

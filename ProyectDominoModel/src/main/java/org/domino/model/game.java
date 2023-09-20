@@ -1,5 +1,5 @@
 //Clase juego
-package org.domino.dominio;
+package org.domino.model;
 
 /**
  *

@@ -1,5 +1,5 @@
 //Clase jugador
-package org.domino.dominio;
+package org.domino.model;
 
 /**
  *

@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.domino.dominio;
+package org.domino.model;
 
 /**
  *
  * @author arace
  */
-public class muleToken {
+public class room {
     
 }
