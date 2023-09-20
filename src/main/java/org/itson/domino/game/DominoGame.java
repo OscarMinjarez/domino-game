@@ -2,17 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package org.itson.proyectodominoview;
-
-import org.itson.src.Game;
+package org.itson.domino.game;
 
 /**
  *
- * @author oscar
+ * @author arace
  */
-public class ProyectoDominoView {
+public class DominoGame {
 
     public static void main(String[] args) {
-        new Game();
+        System.out.println("Hello World!");
     }
 }

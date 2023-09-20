@@ -1,5 +1,5 @@
 //Clase jugador
-package org.domino.model;
+package org.itson.model;
 
 /**
  *
