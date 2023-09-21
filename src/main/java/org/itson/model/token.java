@@ -5,6 +5,6 @@ package org.itson.model;
  *
  * @author arace
  */
-public class token {
+public class Token {
     
 }
