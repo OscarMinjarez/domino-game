@@ -1,7 +1,7 @@
 
 package org.itson.domino.game;
 
-import org.itson.src.Game;
+import org.itson.view.Window;
 
 /**
  *
@@ -10,6 +10,10 @@ import org.itson.src.Game;
 public class DominoGame {
 
     public static void main(String[] args) {
-        new Game();
+        // Crea la ventana
+        Window window = new Window();
+
+        // Muestra la ventana
+        window.setVisible(true);
     }
 }

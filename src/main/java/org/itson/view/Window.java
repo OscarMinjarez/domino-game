@@ -1,58 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.view;
 
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+// Clase Window
+
 import javax.swing.JFrame;
 
-/**
- *
- * @author arace
- */
-public class Window extends JFrame implements MouseListener, KeyListener {
+public class Window extends JFrame {
 
-    private Graphics graphics;
+    private MouseListener mouseListener;
+    private KeyListener keyListener;
 
     public Window() {
-        super("My Game");
+        super("Mi juego");
         setSize(300, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // Crea el objeto Graphics
-        graphics = getGraphics();
-    }
+        // Crea una instancia de MouseListener
+        mouseListener = new MouseListener();
 
-    @Override
-    public void paint(Graphics g) {
-        // Dibuja en la pantalla
-        g.drawString("Hola mundo!", 100, 100);
-    }
+        // Crea una instancia de InputListener
+        keyListener = new KeyListener();
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // Procesa el evento de clic del mouse
-    }
+        // Agrega los oyentes de eventos a la ventana
+        addMouseListener(mouseListener);
+        addKeyListener(keyListener);
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // Procesa el evento de liberación del mouse
+        // Muestra la ventana
+        setVisible(true);
     }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // Procesa el evento de pulsación de tecla
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // Procesa el evento de liberación de tecla
-    }
-
 }
-

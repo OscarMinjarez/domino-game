@@ -4,11 +4,13 @@
  */
 package org.itson.view;
 
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author arace
  */
-public class MouseListener implements MouseListener {
+public class MouseListener implements java.awt.event.MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
