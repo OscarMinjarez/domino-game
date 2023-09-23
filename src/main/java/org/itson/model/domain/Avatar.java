@@ -1,4 +1,4 @@
-package org.itson.model;
+package org.itson.model.domain;
 
 import java.awt.Image;
 

@@ -21,6 +21,7 @@ public class Window extends JFrame implements Runnable {
         return Window.instance;
     }
     
+    @Override
     public void run() {
         this.init();
         this.loop();
