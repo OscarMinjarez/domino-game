@@ -28,7 +28,7 @@ public class Window extends JFrame implements Runnable {
     }
     
     public void init() {
-        this.setSize(GamePanel.getScreenWidth(), GamePanel.getScreenHeight());
+        this.setSize(Display.getScreenWidth(), Display.getScreenHeight());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         
@@ -42,11 +42,14 @@ public class Window extends JFrame implements Runnable {
         this.addMouseListener(mouseListener);
         this.addKeyListener(keyListener);
         
-        this.add(GamePanel.get());
+        this.add(Display.get());
 
         // Muestra la ventana
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
+        Sprites sprite = new Sprites("src/main/java/imagenes/flechita.png",50,50);
+         Display.get().agregarImagen(sprite);
         
     }
     
@@ -54,7 +57,7 @@ public class Window extends JFrame implements Runnable {
        gameThread = new Thread(this); 
        gameThread.start();
     }
-     
+    
      
     // Implementa el game loop
     public void gameLoop() {
