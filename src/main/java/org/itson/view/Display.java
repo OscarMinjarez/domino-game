@@ -27,18 +27,17 @@ public class Display extends JPanel {
     private static final int maxScreenRow = 12; 
     private static final int screenWidth = titleSize * maxScreeenCol;
     private static final int screenHeight = titleSize * maxScreenRow;
-    private List<Sprites> images = new ArrayList<>();
-    private Sprites seleccionaImagen = null;
+    private static List<Sprite> sprites = new ArrayList<>();
 
-    public void agregarImagen(Sprites image) {
-        images.add(image);
+    public void addSprite(Sprite sprite) {
+        get().sprites.add(sprite);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Sprites image : images) {
+        for (Sprite image : get().sprites) {
             image.draw(g, this);
         }
     }
@@ -48,43 +47,20 @@ public class Display extends JPanel {
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                for (Sprites image : images) {
-                    if (image.getBounds().contains(e.getPoint())) {
-                        seleccionaImagen = image;
-                        seleccionaImagen.setIsDragging(true);
-                        break;
-                    }
-                }
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                if (seleccionaImagen != null) {
-                    seleccionaImagen.setIsDragging(false);
-                }
-                seleccionaImagen = null;
-            }
-        });
-
-        addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                if (seleccionaImagen != null && seleccionaImagen.isDragging()) {
-                    seleccionaImagen.updatePosition(e.getX(), e.getY());
-                    repaint();
-                }
-            }
-        });
+        this.addMouseListener(MouseListener.get());
+        this.addMouseMotionListener(MouseListener.get());
     }
+    
     public static Display get() {
         if (Display.instance == null) {
             Display.instance = new Display();
         }
 
         return Display.instance;
+    }
+    
+    public static List<Sprite> getSprites() {
+        return get().sprites;
     }
 
     public static int getScreenWidth() {

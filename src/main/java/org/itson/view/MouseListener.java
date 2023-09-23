@@ -4,25 +4,48 @@
  */
 package org.itson.view;
 
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 /**
  *
  * @author arace
  */
-public class MouseListener implements java.awt.event.MouseListener {
+public class MouseListener extends MouseAdapter implements MouseMotionListener {
+    private static MouseListener instance;
+    
+    private Sprite selectedSprite;
+    
+    private MouseListener() {
+    }
+    
+    public static MouseListener get() {
+        if (MouseListener.instance == null) {
+            MouseListener.instance = new MouseListener();
+        }
+        
+        return MouseListener.instance;
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
-       // Procesa el evento de presionar el mouse
-            System.out.println("Mouse presionado en la ubicación: (" + e.getX() + ", " + e.getY() + ")");
-
+        for (Sprite image : Display.getSprites()) {
+            if (image.getBounds().contains(e.getPoint())) {
+                this.selectedSprite = image;
+                this.selectedSprite.setIsDragging(true);
+                break;
+            }
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // Procesa el evento de liberar el mouse
-            System.out.println("Mouse liberado en la ubicación: (" + e.getX() + ", " + e.getY() + ")");
+        if (this.selectedSprite != null) {
+            this.selectedSprite.setIsDragging(false);
+        }
+        
+        this.selectedSprite = null;
     }
 
     @Override
@@ -41,10 +64,11 @@ public class MouseListener implements java.awt.event.MouseListener {
     public void mouseExited(MouseEvent e) {
         // Procesa el evento de salida del mouse de la ventana
     }
-
     
-    
-    
-    
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        if (this.selectedSprite != null && this.selectedSprite.isDragging()) {
+            this.selectedSprite.updatePosition(e.getX(), e.getY());
+        }
+    }
 }
-

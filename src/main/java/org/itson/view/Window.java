@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 public class Window extends JFrame implements Runnable {
     private static Window instance;
 
-    private MouseListener mouseListener;
     private KeyListener keyListener;
     
     Thread gameThread;
@@ -24,7 +23,7 @@ public class Window extends JFrame implements Runnable {
     
     public void run() {
         this.init();
-        gameLoop();
+        this.loop();
     }
     
     public void init() {
@@ -32,14 +31,10 @@ public class Window extends JFrame implements Runnable {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         
-        // Crea una instancia de MouseListener
-        this.mouseListener = new MouseListener();
-
         // Crea una instancia de InputListener
         this.keyListener = new KeyListener();
 
         // Agrega los oyentes de eventos a la ventana
-        this.addMouseListener(mouseListener);
         this.addKeyListener(keyListener);
         
         this.add(Display.get());
@@ -48,8 +43,8 @@ public class Window extends JFrame implements Runnable {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         
-        Sprites sprite = new Sprites("src/main/java/imagenes/flechita.png",50,50);
-         Display.get().agregarImagen(sprite);
+        Sprite sprite = new Sprite("src/main/java/imagenes/flechita.png",50,50);
+         Display.get().addSprite(sprite);
         
     }
     
@@ -60,7 +55,7 @@ public class Window extends JFrame implements Runnable {
     
      
     // Implementa el game loop
-    public void gameLoop() {
+    public void loop() {
         long lastUpdateTime = System.nanoTime();
         final double targetFPS = 60.0;
         final double nsPerFrame = 1_000_000_000.0 / targetFPS;
@@ -76,14 +71,8 @@ public class Window extends JFrame implements Runnable {
                 delta--;
             }
             
-        // Imprime un mensaje en la consola en cada iteración del bucle
-        System.out.println("The game loop is running");
-
-            
             // Dibuja el juego en el panel
             repaint();
         }
     }
-    
-    
 }

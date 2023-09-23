@@ -10,13 +10,13 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 
-public class Sprites {
+public class Sprite {
 
     private Image image;
     private int x, y;
     private boolean isDragging = false;
 
-    public Sprites(String imagePath, int x, int y) {
+    public Sprite(String imagePath, int x, int y) {
         ImageIcon ii = new ImageIcon(imagePath);
         this.image = ii.getImage();
         this.x = x;
