@@ -24,9 +24,18 @@ public class Main {
         window.setTitle("Domino Master");
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
+        
+        
+
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+        
+        // Crea una instancia de MouseListener
+        java.awt.event.MouseListener mouseListener = new MouseListener();
+
+        // Agrega el oyente de eventos de mouse a la ventana
+        window.addMouseListener(mouseListener);
    
     }
     
