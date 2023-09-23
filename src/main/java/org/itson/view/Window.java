@@ -2,13 +2,14 @@ package org.itson.view;
 
 import javax.swing.JFrame;
 
-public class Window extends JFrame {
+public class Window extends JFrame implements Runnable {
     private static Window instance;
 
     private MouseListener mouseListener;
     private KeyListener keyListener;
     
-
+    Thread gameThread;
+    
     private Window() {
         super("Mi juego");
     }
@@ -23,7 +24,7 @@ public class Window extends JFrame {
     
     public void run() {
         this.init();
-        this.run();
+        gameLoop();
     }
     
     public void init() {
@@ -46,9 +47,40 @@ public class Window extends JFrame {
         // Muestra la ventana
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-    }
-    
-    public void loop() {
         
     }
+    
+    public void startGameThread() {
+       gameThread = new Thread(this); 
+       gameThread.start();
+    }
+     
+     
+    // Implementa el game loop
+    public void gameLoop() {
+        long lastUpdateTime = System.nanoTime();
+        final double targetFPS = 60.0;
+        final double nsPerFrame = 1_000_000_000.0 / targetFPS;
+        double delta = 0;
+        
+        while (true) {
+            long now = System.nanoTime();
+            delta += (now - lastUpdateTime) / nsPerFrame;
+            lastUpdateTime = now;
+            
+            if (delta >= 1) {
+                // Actualiza la lógica del juego
+                delta--;
+            }
+            
+        // Imprime un mensaje en la consola en cada iteración del bucle
+        System.out.println("The game loop is running");
+
+            
+            // Dibuja el juego en el panel
+            repaint();
+        }
+    }
+    
+    
 }
