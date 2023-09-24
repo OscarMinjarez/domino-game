@@ -26,8 +26,10 @@ public class Game {
     }
 
     public void loadTokenImage() {
-        tokenManager.loadTokenImage(token);
-    }
+    tokenManager.loadTokenImage(token);
+    // Agregar el token al Display después de cargar la imagen
+    Display.get().addSprite(token.getSprite());
+}
 
     public void update() {
         // Actualiza la lógica del juego

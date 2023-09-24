@@ -39,9 +39,9 @@ public class Display extends JPanel {
         super.paintComponent(g);
 
         // Dibuja el juego en el panel
-        for(Sprite image : get().sprites){
-        image.draw(g,this);
-    }
+        for (Sprite image : get().sprites) {
+            image.draw(g, this);
+        }
     }
 
     public Display() {

@@ -22,6 +22,7 @@ public class Sprite {
         ImageIcon ii = new ImageIcon(imagePath);
         this.image =ii.getImage();
         this.x=x;
+        this.y=y;
     }
 
     public int getWidth() {
