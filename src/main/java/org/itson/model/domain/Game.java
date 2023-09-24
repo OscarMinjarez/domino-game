@@ -26,6 +26,7 @@ public class Game {
     }
 
     public void loadTokenImage() {
+        
     tokenManager.loadTokenImage(token);
     // Agregar el token al Display después de cargar la imagen
     Display.get().addSprite(token.getSprite());
