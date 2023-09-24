@@ -14,19 +14,44 @@ public class Sprite {
 
     private Image image;
     private int x, y;
+    private int width, height;
     private boolean isDragging = false;
+    private boolean imageLoaded = false; // Agregamos un atributo para rastrear si la imagen está cargada
 
     public Sprite(String imagePath, int x, int y) {
         ImageIcon ii = new ImageIcon(imagePath);
-        this.image = ii.getImage();
-        this.x = x;
-        this.y = y;
+        this.image =ii.getImage();
+        this.x=x;
+    }
+
+    public int getWidth() {
+        return width; // Devolver el ancho de la imagen
+    }
+
+    public int getHeight() {
+        return height; // Devolver el alto de la imagen
     }
     
+    // Método para cargar la imagen
+    public void loadImage(String imagePath, int width, int height) {
+        ImageIcon ii = new ImageIcon(imagePath);
+        this.image = ii.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        imageLoaded = true;
+    }
+
+    public boolean isImageLoaded() {
+        return imageLoaded;
+    }
+    
+    // Nuevo método para establecer el estado de la imagen cargada
+    public void setImageLoaded(boolean loaded) {
+        imageLoaded = loaded;
+    }
+
     public Rectangle getBounds() {
         return new Rectangle(x, y, image.getWidth(null), image.getHeight(null));
     }
-    
+
     public void draw(Graphics g, ImageObserver observer) {
         g.drawImage(image, x, y, observer);
     }
@@ -42,5 +67,13 @@ public class Sprite {
     public void updatePosition(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+    
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

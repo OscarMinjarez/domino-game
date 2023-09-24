@@ -18,13 +18,14 @@ import javax.swing.JPanel;
  * @author arace
  */
 public class Display extends JPanel {
+
     private static Display instance;
 
     private static final int originalTitleSize = 16;
     private static final int scale = 3;
     private static final int titleSize = originalTitleSize * scale;
     private static final int maxScreeenCol = 16;
-    private static final int maxScreenRow = 12; 
+    private static final int maxScreenRow = 12;
     private static final int screenWidth = titleSize * maxScreeenCol;
     private static final int screenHeight = titleSize * maxScreenRow;
     private static List<Sprite> sprites = new ArrayList<>();
@@ -37,20 +38,21 @@ public class Display extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Sprite image : get().sprites) {
-            image.draw(g, this);
-        }
+        // Dibuja el juego en el panel
+        for(Sprite image : get().sprites){
+        image.draw(g,this);
     }
-    
+    }
+
     public Display() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-        
+
         this.addMouseListener(MouseListener.get());
         this.addMouseMotionListener(MouseListener.get());
     }
-    
+
     public static Display get() {
         if (Display.instance == null) {
             Display.instance = new Display();
@@ -58,7 +60,7 @@ public class Display extends JPanel {
 
         return Display.instance;
     }
-    
+
     public static List<Sprite> getSprites() {
         return get().sprites;
     }

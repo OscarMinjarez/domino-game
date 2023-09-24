@@ -1,5 +1,6 @@
 package org.itson.domino.game;
 
+import javax.swing.SwingUtilities;
 import org.itson.view.Window;
 
 /**
@@ -9,6 +10,9 @@ import org.itson.view.Window;
 public class DominoGame {
 
     public static void main(String[] args) {
-        Window.get().run();
-    }
+    SwingUtilities.invokeLater(() -> {
+        Window window = Window.get();
+        window.startGameThread(); // Inicia el bucle del juego
+    });
+}
 }

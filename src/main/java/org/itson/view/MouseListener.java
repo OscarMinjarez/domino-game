@@ -3,37 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package org.itson.view;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
-/**
- *
- * @author arace
- */
+
 public class MouseListener extends MouseAdapter implements MouseMotionListener {
     private static MouseListener instance;
-    
-    private Sprite selectedSprite;
-    
+
     private MouseListener() {
     }
-    
+
     public static MouseListener get() {
         if (MouseListener.instance == null) {
             MouseListener.instance = new MouseListener();
         }
-        
+
         return MouseListener.instance;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        for (Sprite image : Display.getSprites()) {
-            if (image.getBounds().contains(e.getPoint())) {
-                this.selectedSprite = image;
-                this.selectedSprite.setIsDragging(true);
+        for (Sprite sprite : Display.getSprites()) {
+            if (sprite.getBounds().contains(e.getPoint())) {
+                sprite.setIsDragging(true);
                 break;
             }
         }
@@ -41,34 +34,21 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (this.selectedSprite != null) {
-            this.selectedSprite.setIsDragging(false);
+        for (Sprite sprite : Display.getSprites()) {
+            sprite.setIsDragging(false);
         }
-        
-        this.selectedSprite = null;
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // Procesa el evento de clic del mouse
-        System.out.println("Mouse clickeado en la ubicación: (" + e.getX() + ", " + e.getY() + ")");
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // Procesa el evento de entrada del mouse en la ventana
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // Procesa el evento de salida del mouse de la ventana
-    }
-    
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (this.selectedSprite != null && this.selectedSprite.isDragging()) {
-            this.selectedSprite.updatePosition(e.getX(), e.getY());
+        for (Sprite sprite : Display.getSprites()) {
+            if (sprite.isDragging()) {
+                sprite.updatePosition(e.getX(), e.getY());
+            }
         }
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
     }
 }

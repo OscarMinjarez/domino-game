@@ -1,36 +1,47 @@
 package org.itson.model.domain;
 
-/**
- *
- * @author arace
- */
+import java.awt.Graphics;
+import org.itson.utils.TokenManager;
+import org.itson.view.Display;
+import org.itson.view.Sprite;
+
 public class Game {
 
     private Board board;
-    private Token tokens[];
+    private Token token;
+    private Sprite sprite;
+    private TokenManager tokenManager;
 
-    public Game() {
+    public Game(TokenManager tokenManager) {
+        this.tokenManager = tokenManager;
+        token = tokenManager.generateRandomToken();
     }
 
-    public Board getBoard() {
-        return board;
+    public void startTokenGeneration() {
+        tokenManager.startTokenGeneration();
     }
 
-    public void setBoard(Board board) {
-        this.board = board;
+    public void stopTokenGeneration() {
+        tokenManager.stopTokenGeneration();
     }
 
-    public Token[] getTokens() {
-        return tokens;
+    public void loadTokenImage() {
+        tokenManager.loadTokenImage(token);
     }
 
-    public void setTokens(Token[] tokens) {
-        this.tokens = tokens;
+    public void update() {
+        // Actualiza la lógica del juego
+        token.update();
     }
 
-    public Game(Board board, Token[] tokens) {
-        this.board = board;
-        this.tokens = tokens;
+    public Token getToken() {
+    return token;
+}
+    
+    public void draw(Graphics g, int xOffset, int yOffset) {
+    // Dibuja el token en el panel teniendo en cuenta el xOffset y yOffset
+    int x = (int) token.getPosition().getX() + xOffset;
+    int y = (int) token.getPosition().getY() + yOffset;
+    token.draw(g, Display.get());
     }
-
 }
