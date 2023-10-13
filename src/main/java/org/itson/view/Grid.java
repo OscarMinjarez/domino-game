@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package org.itson.view;
 
 /**
@@ -10,13 +7,13 @@ package org.itson.view;
  */
 public class Grid {
     
-    private int ancho;
-    private int alto;
+    private int wide;
+    private int high;
     private Tile tiles[];
 
-    public Grid(int ancho, int alto, Tile[] tiles) {
-        this.ancho = ancho;
-        this.alto = alto;
+    public Grid(int wide, int high, Tile[] tiles) {
+        this.wide = wide;
+        this.high = high;
         this.tiles = tiles;
     }
     

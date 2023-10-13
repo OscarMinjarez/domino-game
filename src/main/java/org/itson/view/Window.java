@@ -10,7 +10,7 @@ public class Window extends JFrame implements Runnable {
 
     private KeyListener keyListener;
     private Thread gameThread;
-    private Game game; // Agrega una referencia al objeto Game
+    private Game game; 
     private Sprite sprite;
 
     private Window() {
@@ -36,24 +36,24 @@ public class Window extends JFrame implements Runnable {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
 
-        // Crea una instancia de InputListener
+      
         this.keyListener = new KeyListener();
 
-        // Agrega los oyentes de eventos a la ventana
+
         this.addKeyListener(keyListener);
 
-        // Crea una instancia de TokenManager y Game
+  
         tokenManager = new TokenManager(sprite);
         game = new Game(tokenManager);
 
-        // Inicia la generación de tokens
+  
         game.startTokenGeneration();
 
-        // Carga la imagen del token en Game
+  
         game.loadTokenImage();
 
 
-        // Muestra la ventana después de configurar todo
+
         this.add(Display.get());
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -64,7 +64,7 @@ public class Window extends JFrame implements Runnable {
         gameThread.start();
     }
     
-    // Implementa el game loop
+
     public void loop() {
         long lastUpdateTime = System.nanoTime();
         final double targetFPS = 60.0;
@@ -77,12 +77,12 @@ public class Window extends JFrame implements Runnable {
             lastUpdateTime = now;
 
             if (delta >= 1) {
-                // Actualiza la lógica del juego
+
                 game.update();
                 delta--;
             }
 
-            // Solicita que se repinte el panel para dibujar los tokens
+            
             Display.get().repaint();
         }
     }

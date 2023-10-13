@@ -14,15 +14,15 @@ public class Tile {
     
     private int x;
     private int y;
-    private int ancho;
-    private int alto;
+    private int wide;
+    private int high;
     private Image image;
 
-    public Tile(int x, int y, int ancho, int alto, Image image) {
+    public Tile(int x, int y, int wide, int high, Image image) {
         this.x = x;
         this.y = y;
-        this.ancho = ancho;
-        this.alto = alto;
+        this.wide = wide;
+        this.high = high;
         this.image = image;
     }
     
