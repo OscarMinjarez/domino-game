@@ -2,7 +2,7 @@ package org.itson.view;
 
 import javax.swing.JFrame;
 import org.itson.model.domain.Game;
-import org.itson.utils.TokenManager;
+
 
 public class Window extends JFrame implements Runnable {
 
@@ -11,7 +11,6 @@ public class Window extends JFrame implements Runnable {
     private KeyListener keyListener;
     private Thread gameThread;
     private Game game; // Agrega una referencia al objeto Game
-    private TokenManager tokenManager; // Agrega una referencia al TokenManager
     private Sprite sprite;
 
     private Window() {
