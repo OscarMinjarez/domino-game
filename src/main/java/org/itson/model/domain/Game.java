@@ -12,36 +12,35 @@ public class Game {
     private Board board;
     private Token token;
     private Sprite sprite;
-    private TokenManager tokenManager;
+    
 
     /**
      * Constructor de la clase Game. Inicializa la instancia del juego con un administrador de tokens y
      * genera un token aleatorio.
      *
-     * @param tokenManager El administrador de tokens que se utilizará en el juego.
+     * 
      */
-    public Game(TokenManager tokenManager) {
-        this.tokenManager = tokenManager;
-        token = tokenManager.generateRandomToken();
+    public Game() {
+        
     }
      /**
      * Inicia la generación de tokens en el juego utilizando el administrador de tokens.
      */
     public void startTokenGeneration() {
-        tokenManager.startTokenGeneration();
+        
     }
     /**
      * Detiene la generación de tokens en el juego utilizando el administrador de tokens.
      */
     public void stopTokenGeneration() {
-        tokenManager.stopTokenGeneration();
+        
     }
     /**
      * Carga la imagen del token actual en el juego y la muestra en la pantalla.
      */
     public void loadTokenImage() {   
-    tokenManager.loadTokenImage(token);
-    Display.get().addSprite(token.getSprite());
+    
+    
 }
     /**
      * Actualiza el estado del token en el juego.

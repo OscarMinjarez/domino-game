@@ -43,9 +43,7 @@ public class Window extends JFrame implements Runnable {
         this.addKeyListener(keyListener);
 
   
-        tokenManager = new TokenManager(sprite);
-        game = new Game(tokenManager);
-
+        
   
         game.startTokenGeneration();
 
