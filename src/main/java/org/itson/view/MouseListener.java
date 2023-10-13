@@ -1,32 +1,60 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.itson.view;
 
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Esta clase se encargará de administrar todos los eventos que ocurran con el
+ * ratón dentro de nuestro juego.
+ * @author oscar
+ */
 public class MouseListener extends MouseAdapter implements MouseMotionListener {
 
+    /**
+     * Instancia de esta misma clase para aplicar singleton.
+     */
     private static MouseListener instance;
-    private List<Point> mouseCoordinates = new ArrayList<>();
+    
+    /**
+     * Posición actual de X.
+     */
+    private int x;
+    /**
+     * Posición actual de Y.
+     */
+    private int y;
+    
+    /**
+     * Última posición donde se hizo click en X.
+     */
+    private int lastX;
+    /**
+     * Última posición donde se hizo click en Y.
+     */
+    private int lastY;
+    
+    /**
+     * Arreglo para saber qué botón del ratón está siendo presionado.
+     */
+    private final boolean[] mouseButtonPressed = new boolean[3];
+    
+    /**
+     * Atributo para saber si el ratón está arrastrando algo.
+     */
+    private boolean isDragging;
 
-    public List<Point> getMouseCoordinates() {
-        return mouseCoordinates;
-    }
-
-    public void addMouseCoordinate(Point coordinate) {
-        mouseCoordinates.add(coordinate);
-    }
-
+    /**
+     * Método constructor por omisión privado.
+     */
     private MouseListener() {
     }
 
+    /**
+     * Método que utiliza singleton para obtener una instancia de esta clase
+     * para que sólo exista una en cualquier parte del programa.
+     * @return instancia de MouseListener.
+     */
     public static MouseListener get() {
         if (MouseListener.instance == null) {
             MouseListener.instance = new MouseListener();
@@ -35,52 +63,101 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener {
         return MouseListener.instance;
     }
 
+    /**
+     * Método que se encarga de actualizar el estado de un botón del ratón
+     * específico para saber si se presionó.
+     * @param e eventop del ratón.
+     */
     @Override
     public void mousePressed(MouseEvent e) {
-        for (Sprite sprite : Display.getSprites()) {
-            if (sprite.getBounds().contains(e.getPoint())) {
-                sprite.setIsDragging(true);
-                break;
-            }
-        }
+        get().mouseButtonPressed[e.getButton() - 1] = true;
+        get().isDragging = true;
     }
 
+    /**
+     * Método que se encarga de actualizar el estado de un botón del ratón
+     * específico para saber si se soltó.
+     * @param e evento del ratón.
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
-        for (Sprite sprite : Display.getSprites()) {
-            sprite.setIsDragging(false);
-        }
+        get().mouseButtonPressed[e.getButton() - 1] = false;
+        get().isDragging = false;
     }
-
+    
+    /**
+     * Método que verifica si un botón del ratón ha sido clickeado (presionado
+     * y soltado).
+     * @param e evento del ratón.
+     */
     @Override
-    public void mouseDragged(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        Point coordinate = new Point(x, y);
-        addMouseCoordinate(coordinate);
-        System.out.println("Mouse X: " + x + ", Mouse Y: " + y);
-
-        for (Sprite sprite : Display.getSprites()) {
-            if (sprite.isDragging()) {
-                sprite.updatePosition(x, y);
-            }
-        }
+    public void mouseClicked(MouseEvent e) {
+        get().lastX = e.getX();
+        get().lastY = e.getY();
     }
-
+    
+    /**
+     * Método que guarda las coordenadas del ratón cuando se está moviendo
+     * por la pantalla.
+     * @param e evento del ratón.
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        Point coordinate = new Point(x, y);
-        addMouseCoordinate(coordinate);
-        System.out.println("Mouse X: " + x + ", Mouse Y: " + y);
+        get().x = e.getX();
+        get().y = e.getY();
     }
 
-    public void getCords() {
-        List<Point> coordinates = MouseListener.get().getMouseCoordinates();
-        for (Point coordinate : coordinates) {
-            System.out.println("X: " + coordinate.getX() + ", Y: " + coordinate.getY());
+    /**
+     * Método que obtiene la coordenada X.
+     * @return coordenada X.
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Método que obtiene la coordenada Y.
+     * @return coordenada Y.
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * Método que obtiene la última coordenada X donde se dió un click.
+     * @return coordenada X.
+     */
+    public int getLastX() {
+        return lastX;
+    }
+
+    /**
+     * Método que obtiene la última coordenada Y donde se  dió un click.
+     * @return coordenada Y.
+     */
+    public int getLastY() {
+        return lastY;
+    }
+
+    /**
+     * Método para saber si actualmente se está arrastrando algo por la pantalla
+     * o no.
+     * @return 
+     */
+    public boolean isIsDragging() {
+        return isDragging;
+    }
+
+    /**
+     * Método para obtener el botón que se está presionando.
+     * @param button índice del botón a presionar.
+     * @return verdadero si el botón especificado se está presionando.
+     */
+    public boolean getMouseButtonPressed(int button) {
+        if (button < get().mouseButtonPressed.length) {
+            return mouseButtonPressed[button];
         }
+        
+        return false;
     }
-
 }
