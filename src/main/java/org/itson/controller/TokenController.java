@@ -4,6 +4,10 @@
  */
 package org.itson.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.itson.model.domain.Token;
 import org.itson.model.enums.TokenHorVer;
 import org.itson.model.enums.TokenPosition;
@@ -54,5 +58,30 @@ public void rotateToken(Token token) {
         swapValuesBetweenFaces(token.getFaces()[0], token.getFaces()[1]);
     }
 }
-    
+
+    public List<Token> generateToken() {
+        List<Token> tiles = new ArrayList<>();
+        Map<String, Token> uniqueTiles = new HashMap<>();
+        
+        for (int i = 0; i <= 6; i++) {
+            for (int j = i; j <= 6; j++) {
+                Token newTile = new Token(
+                    
+                );
+                String tileKey = i + "-" + j;  // Clave única para cada ficha
+
+                if (!uniqueTiles.containsKey(tileKey)) {
+                    uniqueTiles.put(tileKey, newTile);
+                    tiles.add(newTile);
+                }
+            }
+        }
+
+        if (tiles.size() != 28) {
+            throw new RuntimeException("No se generaron 28 fichas únicas.");
+        }
+
+        return tiles;
+    }
 }
+
