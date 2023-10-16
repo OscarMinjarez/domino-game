@@ -1,9 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package org.itson.controller;
 
+package org.itson.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,24 +57,22 @@ public void rotateToken(Token token) {
 
     public List<Token> generateToken() {
         List<Token> tiles = new ArrayList<>();
-        Map<String, Token> uniqueTiles = new HashMap<>();
+        Map<String, Token> uniqueToken = new HashMap<>();
         
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
-                Token newTile = new Token(
-                    
-                );
-                String tileKey = i + "-" + j;  // Clave única para cada ficha
+//                Token newToken = new Token(Aqui deberia de establecerse los sprites de las imagenes );
+                String tileKey = i + "-" + j; 
 
-                if (!uniqueTiles.containsKey(tileKey)) {
-                    uniqueTiles.put(tileKey, newTile);
-                    tiles.add(newTile);
+                if (!uniqueToken.containsKey(tileKey)) {
+//                    uniqueToken.put(tileKey, newToken);
+//                    tiles.add(newToken);
                 }
             }
         }
 
         if (tiles.size() != 28) {
-            throw new RuntimeException("No se generaron 28 fichas únicas.");
+            throw new RuntimeException("ERROR: No se generaron las fichas correctamente.");
         }
 
         return tiles;
