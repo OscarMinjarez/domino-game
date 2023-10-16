@@ -32,12 +32,4 @@ public class Board extends Entity {
     public void setTokens(Token[] tokens) {
         this.tokens = tokens;
     }
-    /** 
-     * Metodo que actualiza los tokens
-     * Falta modificar
-     */
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

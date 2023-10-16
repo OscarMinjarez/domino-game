@@ -35,12 +35,5 @@ public class Pit extends Entity {
     public void setTokens(Token[] tokens) {
         this.tokens = tokens;
     }
-    /**
-     * Implementación del método abstracto 'update' de la clase Entity. En este caso, no realiza
-     * ninguna acción específica de actualización.
-     */
-    @Override
-    public void update() {
-        
-    }
+  
 }

@@ -45,10 +45,7 @@ public class Window extends JFrame implements Runnable {
   
         
   
-        game.startTokenGeneration();
-
-  
-        game.loadTokenImage();
+        
 
 
 
@@ -76,7 +73,7 @@ public class Window extends JFrame implements Runnable {
 
             if (delta >= 1) {
 
-                game.update();
+                
                 delta--;
             }
 
