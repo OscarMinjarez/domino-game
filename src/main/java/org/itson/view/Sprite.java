@@ -25,6 +25,10 @@ public class Sprite {
         this.y=y;
     }
 
+    public Sprite(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getWidth() {
         return width; // Devolver el ancho de la imagen
     }

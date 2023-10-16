@@ -65,6 +65,6 @@ public class Game {
     public void draw(Graphics g, int xOffset, int yOffset) {
     int x = (int) token.getPosition().getX() + xOffset;
     int y = (int) token.getPosition().getY() + yOffset;
-    token.draw(g, Display.get());
+    token.draw(Display.get());
     }
 }
