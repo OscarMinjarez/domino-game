@@ -21,6 +21,11 @@ public class Token extends Entity {
         this.tokenHorVer = tokenHorVer;
     }
 
+    public void draw() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
     public class Face {
 
         private Sprite sprite;
@@ -94,7 +99,7 @@ public class Token extends Entity {
         return position;
     }
 
-    public void draw(Graphics g, ImageObserver observer) {
+    public void draw(ImageObserver observer) {
         // Dibuja las caras del token usando faces[0].getSprite() y faces[1].getSprite()
         // Asegúrate de gestionar la posición adecuadamente durante el dibujo.
     }
