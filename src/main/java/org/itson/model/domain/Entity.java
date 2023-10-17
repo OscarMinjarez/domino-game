@@ -28,9 +28,5 @@ public abstract class Entity {
      */
     public void setPosition(Vector2 position) {
         this.position = position;
-    }
-    /**
-     * Metodo que actualiza el vector
-     */
-    public abstract void update();
+    }  
 }

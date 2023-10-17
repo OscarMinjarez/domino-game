@@ -32,7 +32,7 @@ public class Token extends Entity {
         private int value;
         private TokenPosition tokenPosition;
 
-        public Face(Sprite sprite, int valor, TokenPosition tokenPosition) {
+        public Face(Sprite sprite, int value, TokenPosition tokenPosition) {
             this.sprite = sprite;
             this.value = value;
             this.tokenPosition = tokenPosition;
@@ -104,8 +104,4 @@ public class Token extends Entity {
         // Asegúrate de gestionar la posición adecuadamente durante el dibujo.
     }
 
-    @Override
-    public void update() {
-        // Actualiza la lógica del token si es necesario.
-    }
 }
