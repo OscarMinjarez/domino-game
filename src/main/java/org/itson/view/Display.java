@@ -48,9 +48,6 @@ public class Display extends JPanel {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-
-        this.addMouseListener(MouseListener.get());
-        this.addMouseMotionListener(MouseListener.get());
     }
 
     public static Display get() {
