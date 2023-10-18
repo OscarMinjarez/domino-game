@@ -72,6 +72,8 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener {
     public void mousePressed(MouseEvent e) {
         get().mouseButtonPressed[e.getButton() - 1] = true;
         get().isDragging = true;
+        
+        System.out.println(e.getButton() + ": " +  get().mouseButtonPressed[e.getButton() - 1]);
     }
 
     /**
@@ -144,7 +146,7 @@ public class MouseListener extends MouseAdapter implements MouseMotionListener {
      * o no.
      * @return 
      */
-    public boolean isIsDragging() {
+    public boolean getIsDragging() {
         return isDragging;
     }
 

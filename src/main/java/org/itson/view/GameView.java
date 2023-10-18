@@ -24,7 +24,7 @@ public class GameView {
 //    super.onCreate();
 
     tokens = new ArrayList<>();
-    tokens.add(new Token(new Sprite("face1.png"), new Sprite("face2.png"), new Vector2(100, 100), TokenHorVer.HORIZONTAL, TokenPosition.TOP));
+//    tokens.add(new Token(new Sprite("face1.png"), new Sprite("face2.png"), new Vector2(100, 100), TokenHorVer.HORIZONTAL, TokenPosition.TOP));
 //    setContentView(new GameView(this));
 }
 
@@ -37,7 +37,7 @@ public class GameView {
 
     public void update() {
         for (Token token : tokens) {
-            token.update();
+//            token.update();
     }
 }
 
