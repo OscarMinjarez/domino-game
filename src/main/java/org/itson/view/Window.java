@@ -3,18 +3,19 @@ package org.itson.view;
 import javax.swing.JFrame;
 import org.itson.model.domain.Game;
 
-
 public class Window extends JFrame implements Runnable {
 
     private static Window instance;
 
     private KeyListener keyListener;
     private Thread gameThread;
-    private Game game; 
+    private Game game;
     private Sprite sprite;
+    private Display display;
 
     private Window() {
         super("Mi juego");
+
     }
 
     public static Window get() {
@@ -36,20 +37,15 @@ public class Window extends JFrame implements Runnable {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
 
-      
         this.keyListener = new KeyListener();
 
-
         this.addKeyListener(keyListener);
+        int maxScreeenCol = Display.maxScreeenCol;
+        int maxScreenRow = Display.maxScreenRow;
+        Grid grid = new Grid(maxScreeenCol, maxScreenRow, new Tile[maxScreeenCol][maxScreenRow]);
+        this.display = new Display(grid); // Aquí se crea el Display y se pasa el Grid
 
-  
-        
-  
-        
-
-
-
-        this.add(Display.get());
+        this.add(display);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
@@ -58,7 +54,6 @@ public class Window extends JFrame implements Runnable {
         gameThread = new Thread(this);
         gameThread.start();
     }
-    
 
     public void loop() {
         long lastUpdateTime = System.nanoTime();
@@ -73,12 +68,14 @@ public class Window extends JFrame implements Runnable {
 
             if (delta >= 1) {
 
-                
                 delta--;
             }
 
-            
             Display.get().repaint();
         }
+    }
+
+    public void setDisplay(Display display) {
+        this.display = display;
     }
 }

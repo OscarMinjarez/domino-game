@@ -24,24 +24,15 @@ public class Display extends JPanel {
     private static final int originalTitleSize = 16;
     private static final int scale = 3;
     private static final int titleSize = originalTitleSize * scale;
-    private static final int maxScreeenCol = 16;
-    private static final int maxScreenRow = 12;
+    public static final int maxScreeenCol = 16;
+    public static final int maxScreenRow = 12;
     private static final int screenWidth = titleSize * maxScreeenCol;
     private static final int screenHeight = titleSize * maxScreenRow;
-    private static List<Sprite> sprites = new ArrayList<>();
+    private Grid grid;
 
-    public void addSprite(Sprite sprite) {
-        get().sprites.add(sprite);
-    }
+    public Display(Grid grid) {
+        this.grid = grid;
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        // Dibuja el juego en el panel
-        for (Sprite image : get().sprites) {
-            image.draw(g, this);
-        }
     }
 
     public Display() {
@@ -53,16 +44,40 @@ public class Display extends JPanel {
         this.addMouseMotionListener(MouseListener.get());
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+
+        int tileWidth = screenWidth / maxScreeenCol;
+        int tileHeight = screenHeight / maxScreenRow;
+
+        for (int i = 0; i < maxScreeenCol; i++) {
+            for (int j = 0; j < maxScreenRow; j++) {
+                Tile tile = grid.getTile(i, j);
+                int x = i * tileWidth;
+                int y = j * tileHeight;
+
+                g.drawRect(x, y, tileWidth, tileHeight); 
+
+              
+                g.setColor(Color.RED); 
+
+                // Línea horizontal
+                g.drawLine(x, y + tileHeight, x + tileWidth, y + tileHeight);
+
+                // Línea vertical
+                g.drawLine(x + tileWidth, y, x + tileWidth, y + tileHeight);
+            }
+        }
+    }
+
     public static Display get() {
         if (Display.instance == null) {
             Display.instance = new Display();
         }
 
         return Display.instance;
-    }
-
-    public static List<Sprite> getSprites() {
-        return get().sprites;
     }
 
     public static int getScreenWidth() {
