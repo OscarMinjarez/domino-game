@@ -9,14 +9,19 @@ package org.itson.frames;
  * @author arace
  */
 public class FrmCreateRoom extends javax.swing.JFrame {
-
+private static FrmCreateRoom instance;
     /**
      * Creates new form FrmCreateRoom
      */
-    public FrmCreateRoom() {
+    private FrmCreateRoom() {
         initComponents();
     }
-
+public static FrmCreateRoom get(){
+    if(FrmCreateRoom.instance==null){
+        FrmCreateRoom.instance = new FrmCreateRoom();
+    }
+   return FrmCreateRoom.instance;
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,7 +41,7 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         check4 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -144,7 +149,7 @@ public class FrmCreateRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_check2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       FrmRoom v = new FrmRoom();
+       FrmRoom v = FrmRoom.get();
        v.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

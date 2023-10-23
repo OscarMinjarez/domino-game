@@ -10,11 +10,21 @@ package org.itson.frames;
  */
 public class FrmMainMenuPlayer extends javax.swing.JFrame {
 
+    private static FrmMainMenuPlayer instance;
+
     /**
      * Creates new form MainMenuPlayer
      */
-    public FrmMainMenuPlayer() {
+    private FrmMainMenuPlayer() {
         initComponents();
+    }
+
+    public static FrmMainMenuPlayer get() {
+        if (FrmMainMenuPlayer.instance == null) {
+            FrmMainMenuPlayer.instance = new FrmMainMenuPlayer();
+
+        }
+        return FrmMainMenuPlayer.instance;
     }
 
     /**
@@ -34,7 +44,7 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         btnRoom = new javax.swing.JButton();
         btnCreateRoom = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
@@ -110,8 +120,8 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoomActionPerformed
-       FrmCreateRoom v = new FrmCreateRoom();
-       v.setVisible(true);
+        FrmCreateRoom v =  FrmCreateRoom.get();
+        v.setVisible(true);
     }//GEN-LAST:event_btnCreateRoomActionPerformed
 
     /**

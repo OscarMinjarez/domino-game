@@ -15,33 +15,8 @@ public class Window extends JFrame implements Runnable {
     private Sprite sprite;
     private List<TokenView> dominoTiles;
 
-    private Window() {
-        setTitle("Juego de Dominó");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
-        setLocationRelativeTo(null);
-        setLayout(new FlowLayout());
-        // Inicializar la lista de fichas de dominó
-        dominoTiles = new ArrayList<>();
 
-        // Agregar algunas fichas de dominó de ejemplo
-        dominoTiles.add(new TokenView("/assets/1.jpg", "/assets/1.jpg"));
-        dominoTiles.add(new TokenView("/assets/1.jpg", "/assets/2.jpg"));
-        dominoTiles.add(new TokenView("/assets/2.jpg", "/assets/4.jpg"));
-        dominoTiles.add(new TokenView("/assets/3.jpg", "/assets/6.jpg"));
-        dominoTiles.add(new TokenView("/assets/4.jpg", "/assets/2.jpg"));
-
-        // Agregar las fichas de dominó a la ventana
-        for (TokenView tile : dominoTiles) {
-            add(tile);
-        }
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            Window view = new Window();
-            view.setVisible(true);
-        });
+    
     private Display display;
 
     private Window() {
@@ -71,9 +46,6 @@ public class Window extends JFrame implements Runnable {
 //        this.addKeyListener(keyListener);
         this.add(Display.get());
 
-        this.keyListener = new KeyListener();
-
-        this.addKeyListener(keyListener);
         int maxScreeenCol = Display.maxScreeenCol;
         int maxScreenRow = Display.maxScreenRow;
         Grid grid = new Grid(maxScreeenCol, maxScreenRow, new Tile[maxScreeenCol][maxScreenRow]);

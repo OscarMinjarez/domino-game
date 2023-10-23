@@ -9,14 +9,21 @@ package org.itson.frames;
  * @author arace
  */
 public class FrmMainMenu extends javax.swing.JFrame {
+    private static FrmMainMenu instance;
 
     /**
      * Creates new form FrmMainMenu
      */
-    public FrmMainMenu() {
+    private FrmMainMenu() {
         initComponents();
     }
-
+    //No se puede instanciar mas veces, y asi no se podran abrir mas ventanas de esta
+    public static FrmMainMenu get() {
+        if (FrmMainMenu.instance == null) {
+            FrmMainMenu.instance = new FrmMainMenu();
+        }
+        return FrmMainMenu.instance;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +41,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Domino Master");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,8 +129,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-       FrmMainMenuPlayer v = new FrmMainMenuPlayer();
-       v.setVisible(true);
+        FrmMainMenuPlayer v = FrmMainMenuPlayer.get();
+        v.setVisible(true);
     }//GEN-LAST:event_btnEnterActionPerformed
 
     /**
