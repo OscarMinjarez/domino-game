@@ -1,4 +1,7 @@
-package org.itson.model.domain;
+package org.itson.player;
+
+import org.itson.model.domain.Avatar;
+import org.itson.token.Token;
 
 /**
  * Clase que representa a un jugador en el contexto de un juego. Un jugador tiene un avatar y puede

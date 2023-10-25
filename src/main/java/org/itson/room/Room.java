@@ -1,4 +1,7 @@
-package org.itson.model.domain;
+package org.itson.room;
+
+import org.itson.game.Game;
+import org.itson.player.Player;
 
 /**
  * Clase que representa una sala en el contexto de un juego. Una sala contiene un conjunto de jugadores

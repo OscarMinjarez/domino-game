@@ -1,12 +1,9 @@
 
-package org.itson.controller;
+package org.itson.token;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.itson.model.domain.Token;
-import org.itson.model.enums.TokenHorVer;
-import org.itson.model.enums.TokenPosition;
 
 /**
  *

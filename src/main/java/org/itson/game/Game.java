@@ -1,4 +1,4 @@
-package org.itson.model.domain;
+package org.itson.game;
 
 /**
  * Clase que representa el juego.

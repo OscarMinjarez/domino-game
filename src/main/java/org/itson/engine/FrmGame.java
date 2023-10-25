@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.itson.view;
+package org.itson.engine;
 
+import org.itson.utils.Tile;
+import org.itson.utils.Grid;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -17,9 +19,9 @@ import javax.swing.JPanel;
  *
  * @author arace
  */
-public class Display extends JPanel {
+public class FrmGame extends JPanel {
 
-    private static Display instance;
+    private static FrmGame instance;
 
     private static final int originalTitleSize = 16;
     private static final int scale = 3;
@@ -30,12 +32,12 @@ public class Display extends JPanel {
     private static final int screenHeight = titleSize * maxScreenRow;
     private Grid grid;
 
-    public Display(Grid grid) {
+    public FrmGame(Grid grid) {
         this.grid = grid;
 
     }
 
-    public Display() {
+    public FrmGame() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
@@ -69,12 +71,12 @@ public class Display extends JPanel {
         }
     }
 
-    public static Display get() {
-        if (Display.instance == null) {
-            Display.instance = new Display();
+    public static FrmGame get() {
+        if (FrmGame.instance == null) {
+            FrmGame.instance = new FrmGame();
         }
 
-        return Display.instance;
+        return FrmGame.instance;
     }
 
     public static int getScreenWidth() {

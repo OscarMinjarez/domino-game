@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package org.itson.frames;
+
+package org.itson.token;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -15,14 +12,11 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author oscar
+ * @author arace
  */
-public class TokenView extends JPanel {
+public class TokenView extends JPanel{
     private BufferedImage image1;
     private BufferedImage image2;
-    
-    private int value1;
-    private int value2;
     
     private int startX, startY;
     private boolean isDragging = false;
@@ -35,25 +29,34 @@ public class TokenView extends JPanel {
             System.out.println(e.getMessage());
         }
         
-        this.setPreferredSize(new Dimension(16, 32)); // Tamaño de la ficha
+        setPreferredSize(new Dimension(16 * 3, 32 * 3)); // Tamaño de la ficha
+
+        // Puedes personalizar la representación de la ficha aquí, como agregar imágenes o dibujar los valores en el panel.
         
-        this.addMouseListener(new MouseAdapter() {
+        addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                // Guarda la posición inicial del mouse al hacer clic en la ficha
                 startX = e.getX();
                 startY = e.getY();
             }
-            
+
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (isDragging) {
+                    // Si la ficha se estaba arrastrando, verifica si se soltó en una posición válida para jugar.
+                    // Implementa aquí la lógica para verificar la posición de soltar.
+                    // Por ejemplo, si se suelta sobre un área de juego válida, realiza la acción correspondiente.
+                    // Puedes llamar a un método en el controlador para procesar el movimiento.
+
+                    // Aquí puedes restaurar la posición de la ficha a su ubicación original.
                     // setLocation(startX, startY);
                     isDragging = false;
                 }
             }
         });
         
-        this.addMouseMotionListener(new MouseAdapter() {
+        addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
                 // Mueve la ficha mientras el mouse se arrastra
@@ -63,17 +66,18 @@ public class TokenView extends JPanel {
                 setLocation(getX() + deltaX, getY() + deltaY);
             }
         });
-
-        // Puedes personalizar la representación de la ficha aquí, como agregar imágenes o dibujar los valores en el panel.
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
+        // Dibuja los valores de la ficha
         if (image1 != null && image2 != null) {
             g.drawImage(image1, 0, 0, this);
-            g.drawImage(image2, 0, 60, this);
+            g.drawImage(image2, 0, 16 * 3, this);
         }
     }
 }
+    
+

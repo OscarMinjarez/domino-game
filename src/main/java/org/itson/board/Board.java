@@ -1,4 +1,7 @@
-package org.itson.model.domain;
+package org.itson.board;
+
+import org.itson.model.domain.Entity;
+import org.itson.token.Token;
 
 /**
  * Clase tablero 
