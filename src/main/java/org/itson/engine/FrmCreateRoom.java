@@ -7,6 +7,8 @@ package org.itson.engine;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import org.itson.player.Player;
+import org.itson.room.RoomController;
 
 /**
  *
@@ -15,11 +17,17 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 public class FrmCreateRoom extends javax.swing.JFrame {
 
     private static FrmCreateRoom instance;
+    
+    private RoomController roomController;
+    private int numberOfPlayers;
+    
+    private Player player;
 
     /**
      * Creates new form FrmCreateRoom
      */
     private FrmCreateRoom() {
+        roomController = RoomController.get();
         initComponents();
     }
     
@@ -34,11 +42,34 @@ public class FrmCreateRoom extends javax.swing.JFrame {
             this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         }
     }
+    
+    private void showFrmRoom() {
+        FrmRoom frmRoom = FrmRoom.get();
+        frmRoom.setRoom(this.roomController.createRoom());
+        frmRoom.setMaxNumberOfPlayers(this.numberOfPlayers);
+        frmRoom.setPlayer(this.player);
+        frmRoom.addPlayer(this.player);
+        this.hiddenWindow();
+        frmRoom.setVisible(true);
+    }
+    
+    private void hiddenWindow() {
+        setVisible(false);
+    }
+    
+    private void choiceNumberOfPlayers(int value) {
+        this.numberOfPlayers = value;
+    }
+    
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     public static FrmCreateRoom get() {
         if (FrmCreateRoom.instance == null) {
             FrmCreateRoom.instance = new FrmCreateRoom();
         }
+        
         return FrmCreateRoom.instance;
     }
 
@@ -56,10 +87,10 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        check2 = new javax.swing.JCheckBox();
-        check3 = new javax.swing.JCheckBox();
-        check4 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        checkTwoPlayers = new javax.swing.JCheckBox();
+        checkThreePlayers = new javax.swing.JCheckBox();
+        checkFourPlayers = new javax.swing.JCheckBox();
+        btnCreateRoom = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -88,22 +119,32 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel2.setText("Seleccione cantidad de jugadores");
 
-        check2.setText("2");
-        check2.addActionListener(new java.awt.event.ActionListener() {
+        checkTwoPlayers.setText("2");
+        checkTwoPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                check2ActionPerformed(evt);
+                checkTwoPlayersActionPerformed(evt);
             }
         });
 
-        check3.setText("3");
-
-        check4.setText("4");
-
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton1.setText("Crear sala");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        checkThreePlayers.setText("3");
+        checkThreePlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                checkThreePlayersActionPerformed(evt);
+            }
+        });
+
+        checkFourPlayers.setText("4");
+        checkFourPlayers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkFourPlayersActionPerformed(evt);
+            }
+        });
+
+        btnCreateRoom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnCreateRoom.setText("Crear sala");
+        btnCreateRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateRoomActionPerformed(evt);
             }
         });
 
@@ -129,14 +170,14 @@ public class FrmCreateRoom extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(78, 78, 78)
-                            .addComponent(check2)
+                            .addComponent(checkTwoPlayers)
                             .addGap(55, 55, 55)
-                            .addComponent(check3)
+                            .addComponent(checkThreePlayers)
                             .addGap(62, 62, 62)
-                            .addComponent(check4))
+                            .addComponent(checkFourPlayers))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(123, 123, 123)
-                            .addComponent(jButton1))))
+                            .addComponent(btnCreateRoom))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,11 +189,11 @@ public class FrmCreateRoom extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(check2)
-                    .addComponent(check3)
-                    .addComponent(check4))
+                    .addComponent(checkTwoPlayers)
+                    .addComponent(checkThreePlayers)
+                    .addComponent(checkFourPlayers))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnCreateRoom)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExit)
@@ -172,24 +213,38 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void check2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_check2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_check2ActionPerformed
+    private void checkTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTwoPlayersActionPerformed
+        checkThreePlayers.setSelected(false);
+        checkFourPlayers.setSelected(false);
+        choiceNumberOfPlayers(Integer.parseInt(this.checkTwoPlayers.getText()));
+    }//GEN-LAST:event_checkTwoPlayersActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FrmRoom v = FrmRoom.get();
-        v.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCreateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoomActionPerformed
+        this.showFrmRoom();
+    }//GEN-LAST:event_btnCreateRoomActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        showFrmMainMenuPlayer();
+        this.showFrmMainMenuPlayer();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        showFrmMainMenuPlayer();
+        this.showFrmMainMenuPlayer();
     }//GEN-LAST:event_formWindowClosing
+
+    private void checkThreePlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkThreePlayersActionPerformed
+        checkTwoPlayers.setSelected(false);
+        checkFourPlayers.setSelected(false);
+        this.choiceNumberOfPlayers(Integer.parseInt(this.checkThreePlayers.getText()));
+    }//GEN-LAST:event_checkThreePlayersActionPerformed
+
+    private void checkFourPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkFourPlayersActionPerformed
+        checkTwoPlayers.setSelected(false);
+        checkThreePlayers.setSelected(false);
+        this.choiceNumberOfPlayers(Integer.parseInt(this.checkFourPlayers.getText()));
+    }//GEN-LAST:event_checkFourPlayersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,12 +282,12 @@ public class FrmCreateRoom extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateRoom;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHelp;
-    private javax.swing.JCheckBox check2;
-    private javax.swing.JCheckBox check3;
-    private javax.swing.JCheckBox check4;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox checkFourPlayers;
+    private javax.swing.JCheckBox checkThreePlayers;
+    private javax.swing.JCheckBox checkTwoPlayers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

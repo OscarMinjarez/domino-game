@@ -7,6 +7,8 @@ package org.itson.engine;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import org.itson.player.Player;
+import org.itson.room.Room;
 
 /**
  *
@@ -15,6 +17,11 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 public class FrmRoom extends javax.swing.JFrame {
 
     private static FrmRoom instance;
+    
+    private Room room;
+    private Player player;
+    
+    private int maxNumberOfPlayers;
 
     /**
      * Creates new form FrmRoom
@@ -38,6 +45,26 @@ public class FrmRoom extends javax.swing.JFrame {
     private void hiddenWindow() {
         setVisible(false);
     }
+    
+    public void setRoom(Room room) {
+        get().room = room;
+    }
+    
+    public void setPlayer(Player player) {
+        get().player = player;
+    }
+    
+    public void setMaxNumberOfPlayers(int numberOfPlayers) {
+        get().maxNumberOfPlayers = numberOfPlayers;
+    }
+    
+    public void addPlayer(Player player) {
+        if (this.room.getPlayers().size() < this.maxNumberOfPlayers) {
+            this.room.addPlayer(player);
+        }
+        
+        this.setNumberOfPlayersConnected();
+    }
 
     public static FrmRoom get() {
         if (FrmRoom.instance == null) {
@@ -45,6 +72,10 @@ public class FrmRoom extends javax.swing.JFrame {
         }
         
         return FrmRoom.instance;
+    }
+    
+    private void setNumberOfPlayersConnected() {
+        get().numberOfPlayersConnected.setText(get().room.getPlayers().size() + " players connected");
     }
 
     /**
@@ -62,7 +93,8 @@ public class FrmRoom extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         btnGame = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblPlayersConnected = new javax.swing.JLabel();
+        numberOfPlayersConnected = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -98,7 +130,7 @@ public class FrmRoom extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("jugadores conectados: ");
+        lblPlayersConnected.setText("jugadores conectados: ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,7 +153,9 @@ public class FrmRoom extends javax.swing.JFrame {
                         .addComponent(btnGame, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(jLabel3)))
+                        .addComponent(lblPlayersConnected)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numberOfPlayersConnected)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +164,9 @@ public class FrmRoom extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayersConnected)
+                    .addComponent(numberOfPlayersConnected))
                 .addGap(39, 39, 39)
                 .addComponent(btnGame)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
@@ -162,6 +198,7 @@ public class FrmRoom extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGameActionPerformed
@@ -218,7 +255,8 @@ public class FrmRoom extends javax.swing.JFrame {
     private javax.swing.JButton btnHelp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblPlayersConnected;
+    private javax.swing.JLabel numberOfPlayersConnected;
     // End of variables declaration//GEN-END:variables
 }

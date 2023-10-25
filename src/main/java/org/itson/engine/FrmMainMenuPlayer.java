@@ -41,7 +41,10 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     }
     
     private void showFrmCreateRoom() {
-        FrmCreateRoom.get().setVisible(true);
+        FrmCreateRoom frmCreateRoom = FrmCreateRoom.get();
+        frmCreateRoom.setPlayer(player);
+        frmCreateRoom.setVisible(true);
+        hiddenWindow();
     }
     
     public void setPlayer(Player player) {
@@ -166,7 +169,6 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
 
     private void btnCreateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoomActionPerformed
         showFrmCreateRoom();
-        hiddenWindow();
     }//GEN-LAST:event_btnCreateRoomActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
