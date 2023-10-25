@@ -1,5 +1,7 @@
 package org.itson.room;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.itson.game.Game;
 import org.itson.player.Player;
 
@@ -9,21 +11,21 @@ import org.itson.player.Player;
  * @author arace
  */
 public class Room {
-    private Player player[];
+    private List<Player> players;
     private Game game;
     /**
      * Constructor por defecto de la clase Room. Inicializa una sala sin jugadores ni juego.
      */
     public Room() {
+        this.players = new ArrayList<>();
     }
 
     /**
      * Constructor de la clase Room que permite especificar un arreglo de jugadores y un juego para la sala.
-     * @param player Un arreglo de jugadores en la sala.
      * @param game El juego en curso en la sala.
      */
-    public Room(Player[] player, Game game) {
-        this.player = player;
+    public Room(Game game) {
+        this.players = new ArrayList<>();
         this.game = game;
     }
 
@@ -31,17 +33,17 @@ public class Room {
      * Obtiene el arreglo de jugadores en la sala.
      * @return Un arreglo de jugadores en la sala.
      */
-    public Player[] getPlayer() {
-        return player;
+    public List<Player> getPlayers() {
+        return players;
     }
 
     /**
      * Establece el arreglo de jugadores en la sala.
      *
-     * @param player Un arreglo de jugadores que se asociarán a la sala.
+     * @param players Un arreglo de jugadores que se asociarán a la sala.
      */
-    public void setPlayer(Player[] player) {
-        this.player = player;
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 
     /**
@@ -58,5 +60,14 @@ public class Room {
      */
     public void setGame(Game game) {
         this.game = game;
+    }
+    
+    public void addPlayer(Player player) {
+        this.players.add(player);
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" + "players=" + players + ", game=" + game + '}';
     }
 }

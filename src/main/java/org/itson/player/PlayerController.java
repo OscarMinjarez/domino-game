@@ -11,6 +11,10 @@ package org.itson.player;
 public class PlayerController {
     private static PlayerController instance;
     
+    private PlayerController() {
+        
+    }
+    
     public static PlayerController get() {
         if (PlayerController.instance == null) {
             PlayerController.instance = new PlayerController();
