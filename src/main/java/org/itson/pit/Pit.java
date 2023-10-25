@@ -1,5 +1,8 @@
 
-package org.itson.model.domain;
+package org.itson.pit;
+
+import org.itson.model.domain.Entity;
+import org.itson.token.Token;
 
 /**
  * Clase que representa un pozo (Pit) en un mundo virtual. Un pozo es una entidad que puede contener

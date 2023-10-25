@@ -1,10 +1,8 @@
 
-package org.itson.model.domain;
+package org.itson.token;
 
-import org.itson.model.enums.TokenHorVer;
-import org.itson.model.enums.TokenPosition;
 import org.itson.utils.Vector2;
-import org.itson.view.Sprite;
+
 
 
 /**
@@ -19,8 +17,8 @@ public class MuleToken extends Token {
      * @param tokenHorVer    La orientación horizontal o vertical del token.
      * @param tokenPosition  La posición específica del token en el mundo virtual.
      */
-    public MuleToken(Sprite faceSprite, int valor, Vector2 position, TokenHorVer tokenHorVer, TokenPosition tokenPosition) {
-        super(faceSprite, valor, faceSprite, valor, position, tokenHorVer, tokenPosition);
+    public MuleToken( int valor, Vector2 position, TokenHorVer tokenHorVer, TokenPosition tokenPosition) {
+        super( valor, valor, position, tokenHorVer, tokenPosition);
     }
 
 }

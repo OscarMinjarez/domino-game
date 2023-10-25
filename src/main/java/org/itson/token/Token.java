@@ -1,11 +1,9 @@
-package org.itson.model.domain;
+package org.itson.token;
 
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
-import org.itson.model.enums.TokenHorVer;
-import org.itson.model.enums.TokenPosition;
+import org.itson.model.domain.Entity;
 import org.itson.utils.Vector2;
-import org.itson.view.Sprite;
 
 public class Token extends Entity {
 
@@ -13,37 +11,28 @@ public class Token extends Entity {
     private Vector2 position;
     private TokenHorVer tokenHorVer;
 
-    public Token(Sprite face1Sprite, int face1Valor, Sprite face2Sprite, int face2Valor, Vector2 position, TokenHorVer tokenHorVer, TokenPosition tokenPosition) {
+    public Token(int face1Valor, int face2Valor, Vector2 position, TokenHorVer tokenHorVer, TokenPosition tokenPosition) {
         this.faces = new Face[2];
-        this.faces[0] = new Face(face1Sprite, face1Valor, tokenPosition);
-        this.faces[1] = new Face(face2Sprite, face2Valor, tokenPosition);
+        this.faces[0] = new Face(face1Valor, tokenPosition);
+        this.faces[1] = new Face(face2Valor, tokenPosition);
         this.position = position;
         this.tokenHorVer = tokenHorVer;
-    }
-
-    public void draw() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 
     public class Face {
 
-        private Sprite sprite;
         private int value;
         private TokenPosition tokenPosition;
 
-        public Face(Sprite sprite, int value, TokenPosition tokenPosition) {
-            this.sprite = sprite;
+        public Face(int value, TokenPosition tokenPosition) {
+
             this.value = value;
             this.tokenPosition = tokenPosition;
         }
 
         public Face() {
 
-        }
-
-        public Sprite getSprite() {
-            return sprite;
         }
 
         public void setValue(int value) {

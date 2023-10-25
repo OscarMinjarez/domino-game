@@ -1,5 +1,5 @@
 
-package org.itson.model.enums;
+package org.itson.token;
 
 /**
  *

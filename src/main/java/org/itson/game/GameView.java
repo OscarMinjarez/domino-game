@@ -1,13 +1,13 @@
-package org.itson.view;
+package org.itson.game;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Paint;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.Context;
-import org.itson.model.domain.Token;
-import org.itson.model.enums.TokenHorVer;
-import org.itson.model.enums.TokenPosition;
+import org.itson.token.Token;
+import org.itson.token.TokenHorVer;
+import org.itson.token.TokenPosition;
 import org.itson.utils.Vector2;
 
 /**
@@ -31,7 +31,7 @@ public class GameView {
     public void draw() {
     //    canvas.(Color.WHITE);
     for (Token token : tokens) {
-        token.draw();
+        
     }
 }
 

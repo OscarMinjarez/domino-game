@@ -1,5 +1,5 @@
 
-package org.itson.view;
+package org.itson.token;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

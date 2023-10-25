@@ -1,35 +1,34 @@
-package org.itson.view;
+package org.itson.domino.game;
 
-import java.awt.FlowLayout;
-import java.util.ArrayList;
+import org.itson.utils.Tile;
+import org.itson.utils.Grid;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import org.itson.model.domain.Game;
-import org.itson.view.TokenView;
+import org.itson.engine.FrmGame;
+import org.itson.game.Game;
+import org.itson.token.TokenView;
 
-public class Window extends JFrame implements Runnable {
-    private static Window instance;
+public class MAIN extends JFrame implements Runnable {
+
+    private static MAIN instance;
     private Thread gameThread;
     private Game game;
-    private Sprite sprite;
+
     private List<TokenView> dominoTiles;
 
+    private FrmGame display;
 
-    
-    private Display display;
-
-    private Window() {
+    private MAIN() {
         super("Mi juego");
 
     }
 
-    public static Window get() {
-        if (Window.instance == null) {
-            Window.instance = new Window();
+    public static MAIN get() {
+        if (MAIN.instance == null) {
+            MAIN.instance = new MAIN();
         }
 
-        return Window.instance;
+        return MAIN.instance;
     }
 
     @Override
@@ -39,17 +38,17 @@ public class Window extends JFrame implements Runnable {
     }
 
     public void init() {
-        this.setSize(Display.getScreenWidth(), Display.getScreenHeight());
+        this.setSize(FrmGame.getScreenWidth(), FrmGame.getScreenHeight());
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
 //        this.keyListener = new KeyListener();
 //        this.addKeyListener(keyListener);
-        this.add(Display.get());
+        this.add(FrmGame.get());
 
-        int maxScreeenCol = Display.maxScreeenCol;
-        int maxScreenRow = Display.maxScreenRow;
+        int maxScreeenCol = FrmGame.maxScreeenCol;
+        int maxScreenRow = FrmGame.maxScreenRow;
         Grid grid = new Grid(maxScreeenCol, maxScreenRow, new Tile[maxScreeenCol][maxScreenRow]);
-        this.display = new Display(grid); // Aquí se crea el Display y se pasa el Grid
+        this.display = new FrmGame(grid); // Aquí se crea el Display y se pasa el Grid
 
         this.add(display);
         this.setLocationRelativeTo(null);
@@ -71,20 +70,26 @@ public class Window extends JFrame implements Runnable {
             long now = System.nanoTime();
             delta += (now - lastUpdateTime) / nsPerFrame;
             lastUpdateTime = now;
-            if (delta >= 1) {   
+            if (delta >= 1) {
                 delta--;
-            }    
+            }
 
             if (delta >= 1) {
 
                 delta--;
             }
 
-            Display.get().repaint();
+            FrmGame.get().repaint();
         }
     }
 
-    public void setDisplay(Display display) {
+    public void setDisplay(FrmGame display) {
         this.display = display;
+    }
+    
+    public static void main(String args[]){
+        
+        get().run();
+        
     }
 }
