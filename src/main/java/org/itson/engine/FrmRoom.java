@@ -43,6 +43,7 @@ public class FrmRoom extends javax.swing.JFrame {
         if (FrmRoom.instance == null) {
             FrmRoom.instance = new FrmRoom();
         }
+        
         return FrmRoom.instance;
     }
 

@@ -5,6 +5,7 @@
 package org.itson.engine;
 
 import javax.swing.JOptionPane;
+import org.itson.player.Player;
 
 /**
  *
@@ -13,11 +14,13 @@ import javax.swing.JOptionPane;
 public class FrmMainMenuPlayer extends javax.swing.JFrame {
 
     private static FrmMainMenuPlayer instance;
+    
+    private Player player;
 
     /**
      * Creates new form MainMenuPlayer
      */
-    private FrmMainMenuPlayer() {
+    private FrmMainMenuPlayer() {      
         initComponents();
     }
     
@@ -39,6 +42,15 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     
     private void showFrmCreateRoom() {
         FrmCreateRoom.get().setVisible(true);
+    }
+    
+    public void setPlayer(Player player) {
+        get().player = player;
+        setPlayerName(get().player);
+    }
+    
+    private void setPlayerName(Player player) {
+        lblName.setText(player.getName());
     }
 
     public static FrmMainMenuPlayer get() {
@@ -62,9 +74,9 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
-        txtName = new javax.swing.JTextField();
         btnRoom = new javax.swing.JButton();
         btnCreateRoom = new javax.swing.JButton();
+        lblName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -91,8 +103,6 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnHelp.setText("Ayuda");
 
-        txtName.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-
         btnRoom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnRoom.setText("Unirse a sala");
 
@@ -103,6 +113,8 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
                 btnCreateRoomActionPerformed(evt);
             }
         });
+
+        lblName.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,27 +131,27 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblName))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCreateRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblName))
                 .addGap(61, 61, 61)
                 .addComponent(btnRoom)
                 .addGap(18, 18, 18)
                 .addComponent(btnCreateRoom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExit)
                     .addComponent(btnHelp))
@@ -149,6 +161,7 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 300));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoomActionPerformed
@@ -207,6 +220,6 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     private javax.swing.JButton btnRoom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JLabel lblName;
     // End of variables declaration//GEN-END:variables
 }
