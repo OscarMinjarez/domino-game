@@ -4,6 +4,8 @@
  */
 package org.itson.engine;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author arace
@@ -17,6 +19,26 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
      */
     private FrmMainMenuPlayer() {
         initComponents();
+    }
+    
+    private void showFrmMainMenu() {
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to come back?", "Exit", JOptionPane.YES_NO_OPTION);
+        
+        if (option == JOptionPane.YES_OPTION) {
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            FrmMainMenu.get().setVisible(true);
+            this.dispose();
+        } else {
+            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        }
+    }
+    
+    private void hiddenWindow() {
+        setVisible(false);
+    }
+    
+    private void showFrmCreateRoom() {
+        FrmCreateRoom.get().setVisible(true);
     }
 
     public static FrmMainMenuPlayer get() {
@@ -45,6 +67,11 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         btnCreateRoom = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
@@ -55,6 +82,11 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
 
         btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnExit.setText("Salir");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnHelp.setText("Ayuda");
@@ -120,9 +152,17 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoomActionPerformed
-        FrmCreateRoom v =  FrmCreateRoom.get();
-        v.setVisible(true);
+        showFrmCreateRoom();
+        hiddenWindow();
     }//GEN-LAST:event_btnCreateRoomActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        showFrmMainMenu();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        showFrmMainMenu();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments

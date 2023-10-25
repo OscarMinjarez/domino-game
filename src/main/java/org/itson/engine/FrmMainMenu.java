@@ -24,6 +24,15 @@ public class FrmMainMenu extends javax.swing.JFrame {
         }
         return FrmMainMenu.instance;
     }
+    
+    private void hiddenWindow() {
+        setVisible(false);
+    }
+    
+    private void showFrmMainMenuPlayer() {
+        FrmMainMenuPlayer.get().setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +50,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Domino Master");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -129,8 +138,8 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        FrmMainMenuPlayer v = FrmMainMenuPlayer.get();
-        v.setVisible(true);
+        showFrmMainMenuPlayer();
+        hiddenWindow();
     }//GEN-LAST:event_btnEnterActionPerformed
 
     /**

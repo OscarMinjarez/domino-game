@@ -16,6 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>org.itson.domino.game.DominoGame</exec.mainClass>
+        <exec.mainClass>org.itson.domino.game.MAIN</exec.mainClass>
     </properties>
 </project>

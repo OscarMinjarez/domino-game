@@ -4,24 +4,44 @@
  */
 package org.itson.engine;
 
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+
 /**
  *
  * @author arace
  */
 public class FrmCreateRoom extends javax.swing.JFrame {
-private static FrmCreateRoom instance;
+
+    private static FrmCreateRoom instance;
+
     /**
      * Creates new form FrmCreateRoom
      */
     private FrmCreateRoom() {
         initComponents();
     }
-public static FrmCreateRoom get(){
-    if(FrmCreateRoom.instance==null){
-        FrmCreateRoom.instance = new FrmCreateRoom();
+    
+    private void showFrmMainMenuPlayer() {
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to come back?", "Exit", JOptionPane.YES_NO_OPTION);
+        
+        if (option == JOptionPane.YES_OPTION) {
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            FrmMainMenuPlayer.get().setVisible(true);
+            this.dispose();
+        } else {
+            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        }
     }
-   return FrmCreateRoom.instance;
-}
+
+    public static FrmCreateRoom get() {
+        if (FrmCreateRoom.instance == null) {
+            FrmCreateRoom.instance = new FrmCreateRoom();
+        }
+        return FrmCreateRoom.instance;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +62,11 @@ public static FrmCreateRoom get(){
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -51,6 +76,11 @@ public static FrmCreateRoom get(){
 
         btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnExit.setText("Salir");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnHelp.setText("Ayuda");
@@ -149,9 +179,17 @@ public static FrmCreateRoom get(){
     }//GEN-LAST:event_check2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       FrmRoom v = FrmRoom.get();
-       v.setVisible(true);
+        FrmRoom v = FrmRoom.get();
+        v.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        showFrmMainMenuPlayer();
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        showFrmMainMenuPlayer();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

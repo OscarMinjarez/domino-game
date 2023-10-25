@@ -4,6 +4,10 @@
  */
 package org.itson.engine;
 
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+
 /**
  *
  * @author arace
@@ -17,6 +21,22 @@ public class FrmRoom extends javax.swing.JFrame {
      */
     private FrmRoom() {
         initComponents();
+    }
+    
+    private void showFrmCreateRoom() {
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to come back?", "Exit", JOptionPane.YES_NO_OPTION);
+        
+        if (option == JOptionPane.YES_OPTION) {
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            FrmMainMenuPlayer.get().setVisible(true);
+            this.dispose();
+        } else {
+            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        }
+    }
+    
+    private void hiddenWindow() {
+        setVisible(false);
     }
 
     public static FrmRoom get() {
@@ -46,6 +66,11 @@ public class FrmRoom extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -55,6 +80,11 @@ public class FrmRoom extends javax.swing.JFrame {
 
         btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnExit.setText("Salir");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnHelp.setText("Ayuda");
@@ -137,6 +167,14 @@ public class FrmRoom extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnGameActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        showFrmCreateRoom();
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        showFrmCreateRoom();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
