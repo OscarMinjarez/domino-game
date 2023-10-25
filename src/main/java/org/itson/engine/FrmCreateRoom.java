@@ -120,20 +120,21 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         jLabel2.setText("Seleccione cantidad de jugadores");
 
         checkTwoPlayers.setText("2");
+        checkTwoPlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-2.png"))); // NOI18N
         checkTwoPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkTwoPlayersActionPerformed(evt);
             }
         });
 
-        checkThreePlayers.setText("3");
+        checkThreePlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-3.png"))); // NOI18N
         checkThreePlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkThreePlayersActionPerformed(evt);
             }
         });
 
-        checkFourPlayers.setText("4");
+        checkFourPlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-4.png"))); // NOI18N
         checkFourPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkFourPlayersActionPerformed(evt);
@@ -161,24 +162,26 @@ public class FrmCreateRoom extends javax.swing.JFrame {
                         .addComponent(btnHelp)
                         .addGap(16, 16, 16))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 36, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(92, 92, 92))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(78, 78, 78)
-                            .addComponent(checkTwoPlayers)
-                            .addGap(55, 55, 55)
-                            .addComponent(checkThreePlayers)
-                            .addGap(62, 62, 62)
-                            .addComponent(checkFourPlayers))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(123, 123, 123)
-                            .addComponent(btnCreateRoom))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(checkTwoPlayers)
+                .addGap(55, 55, 55)
+                .addComponent(checkThreePlayers)
+                .addGap(62, 62, 62)
+                .addComponent(checkFourPlayers)
+                .addGap(0, 24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCreateRoom)
+                        .addGap(164, 164, 164))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(118, 118, 118))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,9 +195,9 @@ public class FrmCreateRoom extends javax.swing.JFrame {
                     .addComponent(checkTwoPlayers)
                     .addComponent(checkThreePlayers)
                     .addComponent(checkFourPlayers))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCreateRoom)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExit)
                     .addComponent(btnHelp))
@@ -205,22 +208,16 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void checkTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTwoPlayersActionPerformed
-        checkThreePlayers.setSelected(false);
-        checkFourPlayers.setSelected(false);
-        choiceNumberOfPlayers(Integer.parseInt(this.checkTwoPlayers.getText()));
-    }//GEN-LAST:event_checkTwoPlayersActionPerformed
 
     private void btnCreateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoomActionPerformed
         this.showFrmRoom();
@@ -245,6 +242,12 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         checkThreePlayers.setSelected(false);
         this.choiceNumberOfPlayers(Integer.parseInt(this.checkFourPlayers.getText()));
     }//GEN-LAST:event_checkFourPlayersActionPerformed
+
+    private void checkTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkTwoPlayersActionPerformed
+        checkThreePlayers.setSelected(false);
+        checkFourPlayers.setSelected(false);
+        choiceNumberOfPlayers(Integer.parseInt(this.checkTwoPlayers.getText()));
+    }//GEN-LAST:event_checkTwoPlayersActionPerformed
 
     /**
      * @param args the command line arguments
