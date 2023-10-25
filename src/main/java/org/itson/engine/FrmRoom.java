@@ -7,6 +7,7 @@ package org.itson.engine;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import org.itson.domino.game.MAIN;
 import org.itson.player.Player;
 import org.itson.room.Room;
 
@@ -36,6 +37,16 @@ public class FrmRoom extends javax.swing.JFrame {
         if (option == JOptionPane.YES_OPTION) {
             this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             FrmMainMenuPlayer.get().setVisible(true);
+            this.dispose();
+        } else {
+            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        }
+    }
+    private void showMAIN(){
+        int option = JOptionPane.showConfirmDialog(this, "Are you sure to start the game?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION){
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            MAIN.get().setVisible(true);
             this.dispose();
         } else {
             this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -202,7 +213,7 @@ public class FrmRoom extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGameActionPerformed
-
+        this.showMAIN();
 
     }//GEN-LAST:event_btnGameActionPerformed
 
