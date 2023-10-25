@@ -127,6 +127,7 @@ public class FrmCreateRoom extends javax.swing.JFrame {
             }
         });
 
+        checkThreePlayers.setText("3");
         checkThreePlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-3.png"))); // NOI18N
         checkThreePlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +135,7 @@ public class FrmCreateRoom extends javax.swing.JFrame {
             }
         });
 
+        checkFourPlayers.setText("4");
         checkFourPlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-4.png"))); // NOI18N
         checkFourPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,40 +157,36 @@ public class FrmCreateRoom extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnExit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnHelp)
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(92, 92, 92))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(checkTwoPlayers)
-                .addGap(55, 55, 55)
-                .addComponent(checkThreePlayers)
-                .addGap(62, 62, 62)
-                .addComponent(checkFourPlayers)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addComponent(btnExit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnHelp)
+                .addGap(16, 16, 16))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCreateRoom)
-                        .addGap(164, 164, 164))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(118, 118, 118))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(checkThreePlayers)
+                    .addComponent(btnCreateRoom))
+                .addGap(26, 26, 26)
+                .addComponent(checkFourPlayers)
+                .addGap(47, 47, 47))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(78, 78, 78)
+                            .addComponent(checkTwoPlayers))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(118, 118, 118)
+                            .addComponent(jLabel2))))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
