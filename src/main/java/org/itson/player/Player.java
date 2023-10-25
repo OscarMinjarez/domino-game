@@ -11,6 +11,8 @@ import org.itson.token.Token;
 public class Player {
     private Avatar avatar;
     private Token tokens[];
+    private String name;
+    
      /**
      * Constructor por defecto de la clase Player. Inicializa un jugador sin avatar ni tokens.
      */
@@ -21,8 +23,9 @@ public class Player {
      * para el jugador.
      * @param avatar El avatar asociado al jugador.
      * @param tokens Un arreglo de tokens que pertenecen al jugador.
+     * @param name Nombre del jugador
      */
-    public Player(Avatar avatar, Token[] tokens) {
+    public Player(Avatar avatar, Token[] tokens, String name) {
         this.avatar = avatar;
         this.tokens = tokens;
     }
@@ -56,5 +59,18 @@ public class Player {
      */
     public void setTokens(Token[] tokens) {
         this.tokens = tokens;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" + "avatar=" + avatar + ", tokens=" + tokens + ", name=" + name + '}';
     }
 }
