@@ -21,11 +21,8 @@ public class GameView {
     private List<Token> tokens = new ArrayList<>();
     
     protected void onCreate() {
-//    super.onCreate();
 
     tokens = new ArrayList<>();
-//    tokens.add(new Token(new Sprite("face1.png"), new Sprite("face2.png"), new Vector2(100, 100), TokenHorVer.HORIZONTAL, TokenPosition.TOP));
-//    setContentView(new GameView(this));
 }
 
     public void draw() {

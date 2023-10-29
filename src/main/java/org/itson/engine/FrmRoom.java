@@ -97,11 +97,8 @@ public class FrmRoom extends javax.swing.JFrame {
 }
     public void enableStartGameButton() {
     if (this.room.getPlayers().size() >= 2) {
-        // Habilitar el botón para comenzar el juego si hay al menos 2 jugadores
-        // Supongo que tu botón se llama "startGameButton", asegúrate de reemplazarlo con el nombre real de tu botón
         btnGame.setEnabled(true);
     } else {
-        // Deshabilitar el botón si no hay al menos 2 jugadores
         btnGame.setEnabled(false);
     }
 }
