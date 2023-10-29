@@ -38,6 +38,4 @@ public class Pit extends Entity {
     public void setTokens(Token[] tokens) {
         this.tokens = tokens;
     }
-  PitContoller pitController = new PitContoller();
-  Pit pit = pitController.getPit();
 }
