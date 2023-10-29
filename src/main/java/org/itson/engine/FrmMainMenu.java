@@ -101,7 +101,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         });
 
         btnEnter.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnEnter.setText("Ingresar");
+        btnEnter.setText("Join");
         btnEnter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnterActionPerformed(evt);
