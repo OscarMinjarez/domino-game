@@ -124,10 +124,8 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         jLabel2.setText("Seleccione cantidad de jugadores");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 75, -1, -1));
 
-        checkTwoPlayers.setForeground(new java.awt.Color(255, 153, 51));
-        checkTwoPlayers.setText("                      2");
-        checkTwoPlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-2.png"))); // NOI18N
-        checkTwoPlayers.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/2 selected.png"))); // NOI18N
+        checkTwoPlayers.setForeground(new java.awt.Color(0, 0, 0));
+        checkTwoPlayers.setText("2");
         checkTwoPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkTwoPlayersActionPerformed(evt);
@@ -135,10 +133,9 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         });
         jPanel1.add(checkTwoPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 120, 220));
 
-        checkThreePlayers.setForeground(new java.awt.Color(255, 153, 51));
-        checkThreePlayers.setText("                       3");
-        checkThreePlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-3.png"))); // NOI18N
-        checkThreePlayers.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/3 selected.png"))); // NOI18N
+        checkThreePlayers.setForeground(new java.awt.Color(0, 0, 0));
+        checkThreePlayers.setText("3");
+        checkThreePlayers.setToolTipText("");
         checkThreePlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkThreePlayersActionPerformed(evt);
@@ -146,10 +143,8 @@ public class FrmCreateRoom extends javax.swing.JFrame {
         });
         jPanel1.add(checkThreePlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 110, 240));
 
-        checkFourPlayers.setForeground(new java.awt.Color(255, 153, 51));
+        checkFourPlayers.setForeground(new java.awt.Color(0, 0, 0));
         checkFourPlayers.setText("                       4");
-        checkFourPlayers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/molumen-domino-set-4.png"))); // NOI18N
-        checkFourPlayers.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets.other/4 selected.png"))); // NOI18N
         checkFourPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkFourPlayersActionPerformed(evt);
