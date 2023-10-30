@@ -1,5 +1,7 @@
 package org.itson.player;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.itson.model.domain.Avatar;
 import org.itson.token.Token;
 
@@ -10,13 +12,14 @@ import org.itson.token.Token;
  */
 public class Player {
     private Avatar avatar;
-    private Token tokens[];
+    private List<Token> tokens;
     private String name;
     
      /**
      * Constructor por defecto de la clase Player. Inicializa un jugador sin avatar ni tokens.
      */
     public Player() {
+        this.tokens = new ArrayList<>();
     }
     /**
      * Constructor de la clase Player que permite especificar un avatar y una colección de tokens
@@ -25,7 +28,8 @@ public class Player {
      * @param tokens Un arreglo de tokens que pertenecen al jugador.
      * @param name Nombre del jugador
      */
-    public Player(Avatar avatar, Token[] tokens, String name) {
+    public Player(Avatar avatar, List<Token> tokens, String name) {
+        this.tokens = new ArrayList<>();
         this.avatar = avatar;
         this.tokens = tokens;
     }
@@ -49,7 +53,7 @@ public class Player {
      * Obtiene la colección de tokens que pertenecen al jugador.
      * @return Un arreglo de tokens que pertenecen al jugador.
      */
-    public Token[] getTokens() {
+    public List<Token> getTokens() {
         return tokens;
     }
 
@@ -57,8 +61,12 @@ public class Player {
      * Establece la colección de tokens que pertenecen al jugador.
      * @param tokens Un arreglo de tokens que se asociarán al jugador.
      */
-    public void setTokens(Token[] tokens) {
+    public void setTokens(List<Token> tokens) {
         this.tokens = tokens;
+    }
+    
+    public void addToken(Token token) {
+        
     }
 
     public String getName() {

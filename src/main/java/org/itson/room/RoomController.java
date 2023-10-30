@@ -4,12 +4,17 @@
  */
 package org.itson.room;
 
+import java.util.List;
+import org.itson.game.Game;
+import org.itson.player.Player;
+
 /**
  *
  * @author oscar
  */
 public class RoomController {
     private static RoomController instance;
+    private Room room;
     
     private RoomController() {
         
@@ -23,7 +28,23 @@ public class RoomController {
         return RoomController.instance;
     }
     
-    public Room createRoom() {
-        return new Room();
+    public void createRoom() {
+        this.room = new Room();
+    }
+    
+    public Room getRoom() {
+        return this.room;
+    }
+    
+    public void setGame(Game game) {
+        this.room.setGame(game);
+    }
+    
+    public void addPlayerToTheRoom(Player player) {
+        this.room.addPlayer(player);
+    }
+    
+    public List<Player> getPlayers() {
+        return this.room.getPlayers();
     }
 }

@@ -1,7 +1,9 @@
 package org.itson.token;
 
-import java.awt.Graphics;
-import java.awt.image.ImageObserver;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Arrays;
+import javax.imageio.ImageIO;
 import org.itson.model.domain.Entity;
 import org.itson.utils.Vector2;
 
@@ -11,10 +13,27 @@ public class Token extends Entity {
     private Vector2 position;
     private TokenHorVer tokenHorVer;
 
-    public Token(int face1Valor, int face2Valor, Vector2 position, TokenHorVer tokenHorVer, TokenPosition tokenPosition) {
+    public Token(int value1, int value2) throws IOException {
         this.faces = new Face[2];
-        this.faces[0] = new Face(face1Valor, tokenPosition);
-        this.faces[1] = new Face(face2Valor, tokenPosition);
+        
+        try {
+            this.faces[0] = new Face(value1);
+            this.faces[1] = new Face(value2);
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        }
+    }
+    
+    public Token(int value1, int value2, Vector2 position, TokenHorVer tokenHorVer, TokenPosition tokenPosition) throws IOException {
+        this.faces = new Face[2];
+        
+        try {
+            this.faces[0] = new Face(value1, tokenPosition);
+            this.faces[1] = new Face(value2, tokenPosition);
+        } catch (IOException e) {
+            throw new IOException(e.getMessage());
+        }
+        
         this.position = position;
         this.tokenHorVer = tokenHorVer;
     }
@@ -24,11 +43,19 @@ public class Token extends Entity {
 
         private int value;
         private TokenPosition tokenPosition;
+        private BufferedImage image;
 
-        public Face(int value, TokenPosition tokenPosition) {
-
+        public Face(int value) throws IOException {
+            this.value = value;
+            
+            this.image = ImageIO.read(getClass().getResource("/assets/sprites/" + this.value + ".jpg"));
+        }
+        
+        public Face(int value, TokenPosition tokenPosition) throws IOException {
             this.value = value;
             this.tokenPosition = tokenPosition;
+            
+            this.image = ImageIO.read(getClass().getResource("/assets/sprites/" + this.value + ".jpg"));
         }
 
         public Face() {
@@ -47,6 +74,10 @@ public class Token extends Entity {
             this.tokenPosition = tokenPosition;
         }
 
+        @Override
+        public String toString() {
+            return "Face{" + "value=" + value + ", tokenPosition=" + tokenPosition + ", image=" + image + '}';
+        }
     }
 
     public Face[] getFaces() {
@@ -84,13 +115,7 @@ public class Token extends Entity {
     }
 
     @Override
-    public Vector2 getPosition() {
-        return position;
+    public String toString() {
+        return "Token{" + "faces=" + Arrays.toString(faces) + ", position=" + position + ", tokenHorVer=" + tokenHorVer + '}';
     }
-
-    public void draw(ImageObserver observer) {
-        // Dibuja las caras del token usando faces[0].getSprite() y faces[1].getSprite()
-        // Asegúrate de gestionar la posición adecuadamente durante el dibujo.
-    }
-
 }
