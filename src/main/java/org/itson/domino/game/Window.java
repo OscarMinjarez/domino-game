@@ -8,9 +8,9 @@ import org.itson.engine.FrmGame;
 import org.itson.game.Game;
 import org.itson.token.TokenView;
 
-public class MAIN extends JFrame implements Runnable {
+public class Window extends JFrame implements Runnable {
 
-    private static MAIN instance;
+    private static Window instance;
     private Thread gameThread;
     private Game game;
 
@@ -18,17 +18,17 @@ public class MAIN extends JFrame implements Runnable {
 
     private FrmGame display;
 
-    private MAIN() {
+    private Window() {
         super("Mi juego");
 
     }
 
-    public static MAIN get() {
-        if (MAIN.instance == null) {
-            MAIN.instance = new MAIN();
+    public static Window get() {
+        if (Window.instance == null) {
+            Window.instance = new Window();
         }
 
-        return MAIN.instance;
+        return Window.instance;
     }
 
     @Override
@@ -43,22 +43,22 @@ public class MAIN extends JFrame implements Runnable {
         this.setResizable(false);
 //        this.keyListener = new KeyListener();
 //        this.addKeyListener(keyListener);
-        this.add(FrmGame.get());
 
         int maxScreeenCol = FrmGame.maxScreeenCol;
         int maxScreenRow = FrmGame.maxScreenRow;
         Grid grid = new Grid(maxScreeenCol, maxScreenRow, new Tile[maxScreeenCol][maxScreenRow]);
-        this.display = new FrmGame(grid); // Aquí se crea el Display y se pasa el Grid
+        this.display = FrmGame.get(); // Aquí se crea el Display y se pasa el Grid
+        this.display.setGrid(grid);
 
         this.add(display);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
-    public void startGameThread() {
-        gameThread = new Thread(this);
-        gameThread.start();
-    }
+//    public void startGameThread() {
+//        gameThread = new Thread(this);
+//        gameThread.start();
+//    }
 
     public void loop() {
         long lastUpdateTime = System.nanoTime();
@@ -79,7 +79,7 @@ public class MAIN extends JFrame implements Runnable {
                 delta--;
             }
 
-            FrmGame.get().repaint();
+            this.display.repaint();
         }
     }
 

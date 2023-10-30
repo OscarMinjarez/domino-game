@@ -32,12 +32,7 @@ public class FrmGame extends JPanel {
     private static final int screenHeight = titleSize * maxScreenRow;
     private Grid grid;
 
-    public FrmGame(Grid grid) {
-        this.grid = grid;
-
-    }
-
-    public FrmGame() {
+    private FrmGame() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
@@ -85,5 +80,9 @@ public class FrmGame extends JPanel {
 
     public static int getScreenHeight() {
         return get().screenHeight;
+    }
+    
+    public void setGrid(Grid grid) {
+        this.grid = grid;
     }
 }

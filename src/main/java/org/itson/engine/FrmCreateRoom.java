@@ -45,7 +45,7 @@ public class FrmCreateRoom extends javax.swing.JFrame {
     
     private void showFrmRoom() {
         FrmRoom frmRoom = FrmRoom.get();
-        frmRoom.setRoom(this.roomController.createRoom());
+//        frmRoom.setRoom(this.roomController.createRoom());
         frmRoom.setMaxNumberOfPlayers(this.numberOfPlayers);
         frmRoom.setPlayer(this.player);
         frmRoom.addPlayer(this.player);
