@@ -12,7 +12,11 @@ public class Token extends Entity {
     private Face[] faces;
     private Vector2 position;
     private TokenHorVer tokenHorVer;
-
+    
+   public Token(){
+       
+   }
+    
     public Token(int value1, int value2) throws IOException {
         this.faces = new Face[2];
         

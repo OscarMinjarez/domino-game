@@ -21,6 +21,10 @@ public class TokenView extends JPanel{
     private int startX, startY;
     private boolean isDragging = false;
 
+    public TokenView(){
+        
+    }
+    
     public TokenView(String image1Path, String image2Path) {
         try {
             this.image1 = ImageIO.read(getClass().getResource(image1Path));
