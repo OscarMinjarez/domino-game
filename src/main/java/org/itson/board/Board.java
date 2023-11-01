@@ -28,11 +28,29 @@ public class Board extends Entity {
     public Token[] getTokens() {
         return tokens;
     }
+    
     /**
-     * Establece los tokens
-     * @param tokens 
+     * Agrega un token al tablero
+     * 
+     * @param token token a agregar
+     * @throws IllegalArgumentException si el token es nulo
+     * @throws IllegalStateException si el tablero está lleno
      */
-    public void setTokens(Token[] tokens) {
-        this.tokens = tokens;
+    public void addToken(Token token) {
+    if (token == null) {
+        throw new IllegalArgumentException("Token cannot be null");
     }
+
+    int currentIndex = 0;
+    while (currentIndex < tokens.length && tokens[currentIndex] != null) {
+        currentIndex++;
+    }
+
+    if (currentIndex < tokens.length) {
+        tokens[currentIndex] = token;
+    } else {
+        throw new IllegalStateException("The board is already full.");
+    }
+}
+    
 }

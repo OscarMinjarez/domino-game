@@ -26,6 +26,7 @@ public class Pruebas {
             gameController.createGame();
             gameController.createRoom();
             gameController.createPit();
+            gameController.createBoard();
             
             Game game = gameController.getGame();
             Room room = gameController.getRoom();
@@ -45,7 +46,6 @@ public class Pruebas {
             gameController.setGameInTheRoom(game);
             System.out.println(room);
             System.out.println(gameController.getGame());
-            System.out.println("Si el tablero esta lleno: "+ gameController.boardIsFull());
             List<Token> tokens = gameController.generateTokens();
             gameController.saveTokensInThePit(tokens);
             System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
@@ -54,15 +54,29 @@ public class Pruebas {
             System.out.println("Total players on the game: " + gameController.getPlayers().size());
             System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             
-            System.out.println("First mule token: " + gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers()));            
-            
-            
+            System.out.println("Biggest mule token: " + gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers()));            
             
             for (Player player : gameController.getPlayers()) {
                 System.out.println("Total tokens for " + player.getName() + ": " + player.getTokens().size());
             }
+            
+            System.out.println("Tokens on the board after putting the biggest mule token: ");
+            printTokens(gameController.getBoard());
+            
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
+    
+    private static void printTokens(Board board) {
+        Token[] tokens = board.getTokens();
+        if (tokens != null) {
+            for (Token token : tokens) {
+                System.out.println(token);
+            }
+        } else {
+            System.out.println("No tokens on the board.");
+        }
+    }
+    
 }

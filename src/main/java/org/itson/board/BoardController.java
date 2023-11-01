@@ -4,6 +4,8 @@
  */
 package org.itson.board;
 
+import org.itson.token.Token;
+
 /**
  *
  * @author icedo
@@ -27,11 +29,19 @@ public class BoardController {
 
     public void createBoard() {
         this.board = new Board();
+        System.out.println("Board initialized in BoardController.");
     }
 
     public Board getBoard() {
         return this.board;
     }
-
+    
+    public void addTokenOnBoard(Token token) {
+        if (this.board != null) {
+            this.board.addToken(token);
+        } else {
+            throw new IllegalStateException("The board has not been created yet.");
+        }
+    }
     
 }
