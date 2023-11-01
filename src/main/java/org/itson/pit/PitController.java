@@ -46,7 +46,7 @@ public class PitController {
     }
     
     public Token getRandomToken() {
-        return this.pit.getTokens().get(Utils.generateRandomNumber(0, this.pit.getTokensQuantity()));
+        return this.pit.getTokens().remove(Utils.generateRandomNumber(0, this.pit.getTokensQuantity()));
     }
     
     public List<Token> getTokens(int quantity) {

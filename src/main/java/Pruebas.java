@@ -41,7 +41,7 @@ public class Pruebas {
             gameController.addPlayerToTheRoom(player1);
             gameController.addPlayerToTheRoom(player2);
             gameController.addPlayerToTheRoom(player3);
-            gameController.addPlayerToTheRoom(player4);
+            // gameController.addPlayerToTheRoom(player4);
             
             gameController.setGameInTheRoom(game);
             System.out.println(room);
@@ -61,22 +61,12 @@ public class Pruebas {
             }
             
             System.out.println("Tokens on the board after putting the biggest mule token: ");
-            printTokens(gameController.getBoard());
+            gameController.putTokenOnBoard(gameController.getRandomToken());
+            System.out.println("Total tokens on the board: " + gameController.getTokensFromTheBoard().size());
+            System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
-    
-    private static void printTokens(Board board) {
-        Token[] tokens = board.getTokens();
-        if (tokens != null) {
-            for (Token token : tokens) {
-                System.out.println(token);
-            }
-        } else {
-            System.out.println("No tokens on the board.");
-        }
-    }
-    
+    }   
 }

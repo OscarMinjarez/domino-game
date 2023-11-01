@@ -83,6 +83,10 @@ public class GameController {
     public List<Token> getTokensFromPit() {
         return this.pitController.getTokens();
     }
+    
+    public Token getRandomToken() {
+        return this.pitController.getRandomToken();
+    }
 
     public void addPlayerToTheRoom(Player player) {
         this.roomController.addPlayerToTheRoom(player);
@@ -133,44 +137,19 @@ public class GameController {
         return this.boardController.getBoard();
     }
 
-   public boolean boardIsFull() {
-    if (this.board != null) {
-        int currentSize = this.getTokensFromPit().size();
-        return currentSize >= 28;
+    public boolean boardIsFull() {
+        if (this.board != null) {
+            int currentSize = this.getTokensFromPit().size();
+            return currentSize >= 28;
+        }
+        throw new RuntimeException("The board has not been created yet.");
     }
-    throw new RuntimeException("The board has not been created yet.");
-}
 
     public void putTokenOnBoard(Token token) {
-    if (token == null) {
-        throw new IllegalArgumentException("Token cannot be null");
-    }
-
-    if (this.game == null) {
-        throw new IllegalStateException("A game must be created before putting tokens on the board.");
-    }
-
-    if (boardIsFull()) {
-        throw new IllegalStateException("The board is already full.");
-    }
-
-    // Obtén el token más grande y colócalo en el tablero
-    MuleToken biggestMuleToken = getBiggestMuleTokenFromPlayers(getPlayers());
-    if (biggestMuleToken != null) {
-        addTokenOnBoard(biggestMuleToken); // Añadir el biggestMuleToken al tablero
-        System.out.println("Se añadio al tablero");
-    } else {
-        // Handle the case when there is no valid Mule token to put on the board
-        throw new IllegalStateException("No valid Mule token to put on the board.");
-    }
-}
-
-    public void addTokenOnBoard(Token token) {
-    if (this.boardController != null) {
         this.boardController.addTokenOnBoard(token);
-    } else {
-        throw new IllegalStateException("The board has not been created yet.");
     }
-}
-
+    
+    public List<Token> getTokensFromTheBoard() {
+        return this.boardController.getTokens();
+    }
 }

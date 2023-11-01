@@ -4,6 +4,7 @@
  */
 package org.itson.board;
 
+import java.util.List;
 import org.itson.token.Token;
 
 /**
@@ -44,4 +45,7 @@ public class BoardController {
         }
     }
     
+    public List<Token> getTokens() {
+        return this.board.getTokens();
+    }
 }
