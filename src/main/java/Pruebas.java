@@ -33,10 +33,10 @@ public class Pruebas {
             Pit pit = gameController.getPit();
             Board board = gameController.getBoard();
             
-            Player player1 = gameController.createPlayer("Oscar");
-            Player player2 = gameController.createPlayer("Aracely");
-            Player player3 = gameController.createPlayer("Martin");
-            Player player4 = gameController.createPlayer("Hector");
+            Player player1 = gameController.createFirstPlayer("Oscar");
+            Player player2 = gameController.createSecondPlayer("Aracely");
+            Player player3 = gameController.createThirdPlayer("Martin");
+//            Player player4 = gameController.createFourthPlayer("Hector");
             
             gameController.addPlayerToTheRoom(player1);
             gameController.addPlayerToTheRoom(player2);

@@ -83,7 +83,7 @@ public class GameController {
     public List<Token> getTokensFromPit() {
         return this.pitController.getTokens();
     }
-    
+
     public Token getRandomToken() {
         return this.pitController.getRandomToken();
     }
@@ -105,9 +105,26 @@ public class GameController {
             player.setTokens(this.pitController.getTokens(quantity));
         }
     }
+// 
+//    public Player createPlayer(String name) {
+//        return this.playerController.createPlayer(name);
+//    }
 
-    public Player createPlayer(String name) {
-        return this.playerController.createPlayer(name);
+    public Player createFirstPlayer(String name) {
+        return this.playerController.createFirstPlayer(name);
+    }
+
+    public Player createSecondPlayer(String name) {
+        return this.playerController.createSecondPlayer(name);
+
+    }
+
+    public Player createThirdPlayer(String name) {
+        return this.playerController.createThirdPlayer(name);
+    }
+
+    public Player createFourthPlayer(String name) {
+        return this.playerController.createFourthPlayer(name);
     }
 
     public List<Player> getPlayers() {
@@ -148,7 +165,7 @@ public class GameController {
     public void putTokenOnBoard(Token token) {
         this.boardController.addTokenOnBoard(token);
     }
-    
+
     public List<Token> getTokensFromTheBoard() {
         return this.boardController.getTokens();
     }
