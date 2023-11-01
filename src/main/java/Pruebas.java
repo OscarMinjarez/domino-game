@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.util.List;
+import org.itson.board.Board;
 import org.itson.engine.ControllerFactory;
 import org.itson.game.Game;
 import org.itson.game.GameController;
@@ -29,6 +30,7 @@ public class Pruebas {
             Game game = gameController.getGame();
             Room room = gameController.getRoom();
             Pit pit = gameController.getPit();
+            Board board = gameController.getBoard();
             
             Player player1 = gameController.createPlayer("Oscar");
             Player player2 = gameController.createPlayer("Aracely");
@@ -38,12 +40,12 @@ public class Pruebas {
             gameController.addPlayerToTheRoom(player1);
             gameController.addPlayerToTheRoom(player2);
             gameController.addPlayerToTheRoom(player3);
-//            gameController.addPlayerToTheRoom(player4);
+            gameController.addPlayerToTheRoom(player4);
             
             gameController.setGameInTheRoom(game);
             System.out.println(room);
             System.out.println(gameController.getGame());
-            
+            System.out.println("Si el tablero esta lleno: "+ gameController.boardIsFull());
             List<Token> tokens = gameController.generateTokens();
             gameController.saveTokensInThePit(tokens);
             System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
@@ -53,6 +55,8 @@ public class Pruebas {
             System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             
             System.out.println("First mule token: " + gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers()));            
+            
+            
             
             for (Player player : gameController.getPlayers()) {
                 System.out.println("Total tokens for " + player.getName() + ": " + player.getTokens().size());

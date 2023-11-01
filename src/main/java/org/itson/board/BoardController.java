@@ -9,28 +9,29 @@ package org.itson.board;
  * @author icedo
  */
 public class BoardController {
+
     private static BoardController instance;
     private Board board;
-    
-    private BoardController(){
-        
+
+    private BoardController() {
+
     }
-    
+
     public static BoardController get() {
         if (BoardController.instance == null) {
             BoardController.instance = new BoardController();
         }
-        
+
         return BoardController.instance;
     }
-    
-    public void createBoard(){
+
+    public void createBoard() {
         this.board = new Board();
     }
-    
+
     public Board getBoard() {
         return this.board;
     }
-    
+
     
 }
