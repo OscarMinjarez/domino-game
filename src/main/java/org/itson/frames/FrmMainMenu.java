@@ -16,7 +16,52 @@ public class FrmMainMenu extends javax.swing.JFrame {
     public FrmMainMenu() {
         initComponents();
     }
+<<<<<<< Updated upstream:src/main/java/org/itson/frames/FrmMainMenu.java
 
+=======
+    
+    //No se puede instanciar mas veces, y asi no se podran abrir mas ventanas de esta
+    public static FrmMainMenu get() {
+        if (FrmMainMenu.instance == null) {
+            FrmMainMenu.instance = new FrmMainMenu();
+        }
+        
+        return FrmMainMenu.instance;
+    }
+    
+    private void hiddenWindow() {
+        setVisible(false);
+    }
+    
+    private void showFrmMainMenuPlayer() {
+        if (checkEmptyName()) {
+            showAlert("Please, enter a name", "Empty name");
+        } else {
+            hiddenWindow();
+            FrmMainMenuPlayer frmMainMenuPlayer = FrmMainMenuPlayer.get();
+            frmMainMenuPlayer.setPlayer(get().createPlayer(txtName.getText().trim()));
+            frmMainMenuPlayer.setVisible(true);
+        }
+    }
+    
+    private boolean checkEmptyName() {
+        return txtName.getText().trim().isBlank();
+    }
+    
+    private Player createPlayer(String name) {
+        return get().playerController.createPlayerOne(name);
+    }
+    
+    private void showAlert(String message, String title) {
+        JOptionPane.showMessageDialog(
+                get(),
+                message, 
+                title,
+                JOptionPane.ERROR_MESSAGE
+        );
+    }
+    
+>>>>>>> Stashed changes:src/main/java/org/itson/engine/FrmMainMenu.java
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
