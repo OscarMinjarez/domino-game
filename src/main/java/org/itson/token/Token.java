@@ -3,6 +3,7 @@ package org.itson.token;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 import javax.imageio.ImageIO;
 import org.itson.model.domain.Entity;
 import org.itson.utils.Vector2;
@@ -116,6 +117,36 @@ public class Token extends Entity {
                 this.faces[1].setTokenPosition(TokenPosition.BOTTOM);
             }
         }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Arrays.deepHashCode(this.faces);
+        hash = 59 * hash + Objects.hashCode(this.position);
+        hash = 59 * hash + Objects.hashCode(this.tokenHorVer);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Token other = (Token) obj;
+        if (!Arrays.deepEquals(this.faces, other.faces)) {
+            return false;
+        }
+        if (!Objects.equals(this.position, other.position)) {
+            return false;
+        }
+        return this.tokenHorVer == other.tokenHorVer;
     }
 
     @Override

@@ -2,7 +2,11 @@
 package org.itson.game;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import org.itson.board.Board;
+import org.itson.board.BoardController;
+import org.itson.engine.ControllerFactory;
 import org.itson.pit.Pit;
 import org.itson.room.Room;
 import org.itson.token.TokenController;
@@ -10,6 +14,7 @@ import org.itson.pit.PitController;
 import org.itson.player.Player;
 import org.itson.player.PlayerController;
 import org.itson.room.RoomController;
+import org.itson.token.MuleToken;
 import org.itson.token.Token;
 
 public class GameController {
@@ -20,12 +25,14 @@ public class GameController {
     private PitController pitController;
     private TokenController tokenController;
     private PlayerController playerController;
+    private BoardController boardController;
     
-    private GameController() {
-        this.roomController = RoomController.get();
-        this.pitController = PitController.get();
-        this.tokenController = TokenController.get();
-        this.playerController = PlayerController.get();
+    private GameController() {      
+        this.roomController = ControllerFactory.getRoomController();
+        this.pitController = ControllerFactory.getPitController();
+        this.tokenController = ControllerFactory.getTokenController();
+        this.playerController = ControllerFactory.getPlayerController();
+        this.boardController = ControllerFactory.getBoardController();
     }
     
     public static GameController get() {
@@ -72,7 +79,7 @@ public class GameController {
         this.pitController.setTokens(tokens);
     }
     
-    public List<Token> getTokens() {
+    public List<Token> getTokensFromPit() {
         return this.pitController.getTokens();
     }
     
@@ -84,7 +91,6 @@ public class GameController {
         return this.tokenController.generateTokens();
     }
     
-    // TODO: mandar esta responsabilidad al pozo
     public void dealTokens(List<Player> players, int quantity) {
         if (!this.checkNumberOfPlayers(players)) {
             throw new RuntimeException("Invalid number of players.");
@@ -105,5 +111,24 @@ public class GameController {
     
     private boolean checkNumberOfPlayers(List<Player> players) {
         return players.size() <= 4 || players.size() >= 2;
+    }
+    
+    public MuleToken getBiggestMuleTokenFromPlayers(List<Player> players) {
+        List<MuleToken> muleTokens = new ArrayList<>();
+        
+        for (Player player : players) {
+            muleTokens.add(this.tokenController.getBiggestMuleTokenPerPlayer(player));
+        }
+        
+        MuleToken removedToken = this.tokenController.getBiggestMuleToken(muleTokens);
+        return (MuleToken) this.tokenController.removeTokenPerThePlayer(players, removedToken);
+    }
+    
+    public void createBoard() {
+        this.boardController.createBoard();
+    }
+    
+    public Board getBoard() {
+        return this.boardController.getBoard();
     }
 }

@@ -10,6 +10,7 @@ package org.itson.board;
  */
 public class BoardController {
     private static BoardController instance;
+    private Board board;
     
     private BoardController(){
         
@@ -23,7 +24,13 @@ public class BoardController {
         return BoardController.instance;
     }
     
-    public Board createBoard(){
-        return new Board();
+    public void createBoard(){
+        this.board = new Board();
     }
+    
+    public Board getBoard() {
+        return this.board;
+    }
+    
+    
 }

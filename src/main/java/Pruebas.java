@@ -1,6 +1,7 @@
 
 import java.io.IOException;
 import java.util.List;
+import org.itson.engine.ControllerFactory;
 import org.itson.game.Game;
 import org.itson.game.GameController;
 import org.itson.pit.Pit;
@@ -20,7 +21,7 @@ import org.itson.token.Token;
 public class Pruebas {
     public static void main(String[] args) {
         try {
-            GameController gameController = GameController.get();
+            GameController gameController = ControllerFactory.getGameController();
             gameController.createGame();
             gameController.createRoom();
             gameController.createPit();
@@ -36,7 +37,7 @@ public class Pruebas {
             
             gameController.addPlayerToTheRoom(player1);
             gameController.addPlayerToTheRoom(player2);
-//            gameController.addPlayerToTheRoom(player3);
+            gameController.addPlayerToTheRoom(player3);
 //            gameController.addPlayerToTheRoom(player4);
             
             gameController.setGameInTheRoom(game);
@@ -45,13 +46,17 @@ public class Pruebas {
             
             List<Token> tokens = gameController.generateTokens();
             gameController.saveTokensInThePit(tokens);
-            System.out.println(gameController.getTokens());
-            System.out.println(gameController.getPit().getTokens().size());
+            System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
             
             gameController.dealTokens(gameController.getPlayers(), 7);
-            System.out.println(gameController.getPlayers());
-            System.out.println(gameController.getTokens().size());
+            System.out.println("Total players on the game: " + gameController.getPlayers().size());
+            System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             
+            System.out.println("First mule token: " + gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers()));            
+            
+            for (Player player : gameController.getPlayers()) {
+                System.out.println("Total tokens for " + player.getName() + ": " + player.getTokens().size());
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
