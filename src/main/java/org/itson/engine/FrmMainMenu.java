@@ -54,7 +54,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }
     
     private Player createPlayer(String name) {
-        return get().playerController.createFirstPlayer(name);
+        return get().playerController.createPlayer(name);
     }
     
     private void showAlert(String message, String title) {

@@ -86,7 +86,7 @@ public class GameController {
         return this.pitController.getTokens();
     }
 
-    public Token getRandomToken() {
+    public Token getRandomTokenFromThePit() {
         return this.pitController.getRandomToken();
     }
 
@@ -94,8 +94,12 @@ public class GameController {
         this.roomController.addPlayerToTheRoom(player);
     }
 
-    public List<TokenComponent> generateTokens() throws IOException {
-        return this.tokenManager.generateTokens();
+    public void generateTokens() throws IOException {
+        this.tokenManager.generateTokens();
+    }
+    
+    public List<Token >getTokens() {
+        return this.tokenManager.getTokens();
     }
 
     public void dealTokens(List<Player> players, int quantity) {
@@ -107,26 +111,9 @@ public class GameController {
             player.setTokens(this.pitController.getTokens(quantity));
         }
     }
-// 
-//    public Player createPlayer(String name) {
-//        return this.playerController.createPlayer(name);
-//    }
-
-    public Player createFirstPlayer(String name) {
-        return this.playerController.createFirstPlayer(name);
-    }
-
-    public Player createSecondPlayer(String name) {
-        return this.playerController.createSecondPlayer(name);
-
-    }
-
-    public Player createThirdPlayer(String name) {
-        return this.playerController.createThirdPlayer(name);
-    }
-
-    public Player createFourthPlayer(String name) {
-        return this.playerController.createFourthPlayer(name);
+ 
+    public Player createPlayer(String name) {
+        return this.playerController.createPlayer(name);
     }
 
     public List<Player> getPlayers() {
@@ -137,16 +124,16 @@ public class GameController {
         return players.size() <= 4 || players.size() >= 2;
     }
 
-//    public MuleToken getBiggestMuleTokenFromPlayers(List<Player> players) {
-//        List<MuleToken> muleTokens = new ArrayList<>();
-//
-//        for (Player player : players) {
-//            muleTokens.add(this.tokenController.getBiggestMuleTokenPerPlayer(player));
-//        }
-//
-//        MuleToken removedToken = this.tokenController.getBiggestMuleToken(muleTokens);
-//        return (MuleToken) this.tokenController.removeTokenPerThePlayer(players, removedToken);
-//    }
+    public MuleToken getBiggestMuleTokenFromPlayers(List<Player> players) {
+        List<MuleToken> muleTokens = new ArrayList<>();
+
+        for (Player player : players) {
+            muleTokens.add(this.tokenManager.getBiggestMuleTokenPerPlayer(player));
+        }
+
+        MuleToken removedToken = this.tokenManager.getBiggestMuleToken(muleTokens);
+        return (MuleToken) this.tokenManager.removeTokenPerThePlayer(players, removedToken);
+    }
 
     public void createBoard() {
         this.boardController.createBoard();

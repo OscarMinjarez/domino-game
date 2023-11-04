@@ -27,6 +27,10 @@ public class TokenComponent {
         return this.tokenController.getToken();
     }
 
+    public TokenController getTokenController() {
+        return this.tokenController;
+    }
+    
     @Override
     public String toString() {
         return "TokenComponent{" + "tokenController=" + tokenController + ", tokenView=" + tokenView + '}';

@@ -8,7 +8,10 @@ import org.itson.game.GameController;
 import org.itson.pit.Pit;
 import org.itson.player.Player;
 import org.itson.room.Room;
+import org.itson.token.MuleToken;
 import org.itson.token.Token;
+import org.itson.token.TokenComponent;
+import org.itson.token.TokenManager;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -33,10 +36,10 @@ public class Pruebas {
             Pit pit = gameController.getPit();
             Board board = gameController.getBoard();
             
-            Player player1 = gameController.createFirstPlayer("Oscar");
-            Player player2 = gameController.createSecondPlayer("Aracely");
-            Player player3 = gameController.createThirdPlayer("Martin");
-//            Player player4 = gameController.createFourthPlayer("Hector");
+            Player player1 = gameController.createPlayer("Oscar");
+            Player player2 = gameController.createPlayer("Aracely");
+            Player player3 = gameController.createPlayer("Martin");
+//            Player player4 = gameController.createPlayer("Hector");
             
             gameController.addPlayerToTheRoom(player1);
             gameController.addPlayerToTheRoom(player2);
@@ -46,22 +49,23 @@ public class Pruebas {
             gameController.setGameInTheRoom(game);
             System.out.println(room);
             System.out.println(gameController.getGame());
-            List<Token> tokens = gameController.generateTokens();
-            gameController.saveTokensInThePit(tokens);
+            gameController.generateTokens();
+            gameController.saveTokensInThePit(gameController.getTokens());
             System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
             
             gameController.dealTokens(gameController.getPlayers(), 7);
             System.out.println("Total players on the game: " + gameController.getPlayers().size());
             System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             
-            System.out.println("Biggest mule token: " + gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers()));            
+            MuleToken firstMuleToken = gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers());
+            System.out.println("Biggest mule token: " + firstMuleToken);            
             
             for (Player player : gameController.getPlayers()) {
                 System.out.println("Total tokens for " + player.getName() + ": " + player.getTokens().size());
             }
             
             System.out.println("Tokens on the board after putting the biggest mule token: ");
-            gameController.putTokenOnBoard(gameController.getRandomToken());
+            gameController.putTokenOnBoard(firstMuleToken);
             System.out.println("Total tokens on the board: " + gameController.getTokensFromTheBoard().size());
             System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             

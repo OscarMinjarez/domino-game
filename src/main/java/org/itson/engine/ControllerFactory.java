@@ -41,8 +41,8 @@ public class ControllerFactory {
         return RoomController.get();
     }
 
-    public static TokenController getTokenController() {
-        return TokenController.get();
-    }
+//    public static TokenController getTokenController() {
+//        return TokenController.get();
+//    }
 
 }

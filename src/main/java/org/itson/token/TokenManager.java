@@ -18,7 +18,7 @@ public class TokenManager {
     private List<TokenComponent> tokensComponents;
     
     private TokenManager() {
-        
+        this.tokensComponents = new ArrayList<>();
     }
     
     public static TokenManager get() {
@@ -29,21 +29,31 @@ public class TokenManager {
         return TokenManager.instance;
     }
     
-    public List<TokenComponent> generateTokens() throws IOException {
-        List<TokenComponent> tokens = new ArrayList<>();
-
+    public void generateTokens() throws IOException {
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
-                tokens.add(new TokenComponent(i, j));
+                this.tokensComponents.add(new TokenComponent(i, j));
             }
         }
 
-        if (tokens.size() == 28) {
+        if (this.tokensComponents.size() == 28) {
             System.out.println("Tokens was create.");
         } else {
             System.out.println("We can't create the tokens");
         }
-
+    }
+    
+    public List<TokenComponent> getTokensComponents() {
+        return this.tokensComponents;
+    }
+    
+    public List<Token> getTokens() {
+        List<Token> tokens = new ArrayList<>();
+        
+        for (TokenComponent tokenComponent : this.tokensComponents) {
+            tokens.add(tokenComponent.getToken());
+        }
+        
         return tokens;
     }
     
