@@ -30,7 +30,6 @@ public class BoardController {
 
     public void createBoard() {
         this.board = new Board();
-        System.out.println("Board initialized in BoardController.");
     }
 
     public Board getBoard() {
