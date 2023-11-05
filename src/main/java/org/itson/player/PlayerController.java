@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package org.itson.player;
 
 /**
@@ -10,6 +7,7 @@ package org.itson.player;
  */
 public class PlayerController {
     private static PlayerController instance;
+    private Player player;
     
     private PlayerController() {
         
@@ -27,6 +25,10 @@ public class PlayerController {
         Player player = new Player();
         player.setName(name);
         return player;
+    }
+
+    public Player getPlayer() {
+        return this.player;
     }
 }
 

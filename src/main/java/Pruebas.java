@@ -13,10 +13,6 @@ import org.itson.token.Token;
 import org.itson.token.TokenComponent;
 import org.itson.token.TokenManager;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 /**
  *

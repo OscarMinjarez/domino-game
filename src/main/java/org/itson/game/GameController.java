@@ -12,6 +12,7 @@ import org.itson.token.TokenController;
 import org.itson.pit.PitController;
 import org.itson.player.Player;
 import org.itson.player.PlayerController;
+import org.itson.player.PlayerManager;
 import org.itson.room.RoomController;
 import org.itson.token.MuleToken;
 import org.itson.token.Token;
@@ -29,6 +30,7 @@ public class GameController {
     private TokenManager tokenManager;
     private PlayerController playerController;
     private BoardController boardController;
+    private PlayerManager playerManager;
 
     private GameController() {
         this.roomController = ControllerFactory.getRoomController();
@@ -97,8 +99,8 @@ public class GameController {
     public void generateTokens() throws IOException {
         this.tokenManager.generateTokens();
     }
-    
-    public List<Token >getTokens() {
+
+    public List<Token> getTokens() {
         return this.tokenManager.getTokens();
     }
 
@@ -111,9 +113,13 @@ public class GameController {
             player.setTokens(this.pitController.getTokens(quantity));
         }
     }
- 
+
     public Player createPlayer(String name) {
         return this.playerController.createPlayer(name);
+    }
+
+    public List<Player> getPlayer() {
+        return this.playerManager.getPlayers();
     }
 
     public List<Player> getPlayers() {
