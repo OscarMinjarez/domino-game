@@ -78,6 +78,10 @@ public class Token extends Entity {
         public void setTokenPosition(TokenPosition tokenPosition) {
             this.tokenPosition = tokenPosition;
         }
+        
+        public BufferedImage getImage() {
+            return this.image;
+        }
 
         @Override
         public String toString() {

@@ -12,7 +12,6 @@ import java.io.IOException;
  */
 public class TokenComponent {
     private TokenController tokenController;
-    private TokenView tokenView;
 
     public TokenComponent(int value1, int value2) throws IOException {
         this.tokenController = new TokenController();
@@ -31,8 +30,12 @@ public class TokenComponent {
         return this.tokenController;
     }
     
+    public TokenView getTokenView() {
+        return this.tokenController.getTokenView();
+    }
+    
     @Override
     public String toString() {
-        return "TokenComponent{" + "tokenController=" + tokenController + ", tokenView=" + tokenView + '}';
+        return "TokenComponent{" + "tokenController=" + tokenController + '}';
     }
 }

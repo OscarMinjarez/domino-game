@@ -6,8 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -15,32 +13,25 @@ import javax.swing.JPanel;
  * @author arace
  */
 public class TokenView extends JPanel{
-    private BufferedImage image1;
-    private BufferedImage image2;
+    private BufferedImage face1;
+    private BufferedImage face2;
     
     private int startX, startY;
     private boolean isDragging = false;
-
-    public TokenView(){
-        
-    }
+    private int faceWidth = 16 * 3;
+    private int faceHeight = 32 * 3;
     
-    public TokenView(String image1Path, String image2Path) {
-        try {
-            this.image1 = ImageIO.read(getClass().getResource(image1Path));
-            this.image2 = ImageIO.read(getClass().getResource(image2Path));
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        
-        setPreferredSize(new Dimension(16 * 3, 32 * 3)); // Tamaño de la ficha
+    private Dimension tokenSize = new Dimension(this.faceWidth, this.faceHeight);
+    
+    public TokenView(Token token) {
+        this.face1 = token.getFaces()[0].getImage();
+        this.face2 = token.getFaces()[1].getImage();
+        setSize(this.tokenSize); // variable de las dimensiones
+        setPreferredSize(this.tokenSize);
 
-        // Puedes personalizar la representación de la ficha aquí, como agregar imágenes o dibujar los valores en el panel.
-        
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                // Guarda la posición inicial del mouse al hacer clic en la ficha
                 startX = e.getX();
                 startY = e.getY();
             }
@@ -77,9 +68,9 @@ public class TokenView extends JPanel{
         super.paintComponent(g);
         
         // Dibuja los valores de la ficha
-        if (image1 != null && image2 != null) {
-            g.drawImage(image1, 0, 0, this);
-            g.drawImage(image2, 0, 16 * 3, this);
+        if (face1 != null && face2 != null) {
+            g.drawImage(face1, 0, 0, this);
+            g.drawImage(face2, 0, 16 * 3, this);
         }
     }
 }

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.itson.player.Player;
+import org.itson.utils.Utils;
 
 /**
  *
@@ -41,6 +42,12 @@ public class TokenManager {
         } else {
             System.out.println("We can't create the tokens");
         }
+    }
+    
+    public TokenView getRandomTokenView() {
+        int index = Utils.generateRandomNumber(0, this.tokensComponents.size());
+        
+        return this.tokensComponents.get(index).getTokenView();
     }
     
     public List<TokenComponent> getTokensComponents() {

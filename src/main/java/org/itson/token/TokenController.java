@@ -8,9 +8,9 @@ import java.io.IOException;
  */
 public class TokenController {
     private Token token;
+    private TokenView tokenView;
     
     public TokenController() {
-
     }
     
     public void createToken(int value1, int value2) throws IOException {
@@ -22,9 +22,15 @@ public class TokenController {
             if (value1 != value2) {
                 this.token = new NormalToken(value1, value2);
             }
+            
+            this.tokenView = new TokenView(this.token);
         } catch (IOException e) {
             throw new IOException(e.getMessage());
         }
+    }
+
+    public TokenView getTokenView() {
+        return this.tokenView;
     }
 
     public void rotateToken() {
@@ -50,5 +56,9 @@ public class TokenController {
     
     public Token getToken() {
         return this.token;
+    }
+    
+    public void setTokenView(TokenView tokenView) {
+        this.tokenView = tokenView;
     }
 }
