@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static org.itson.engine.FrmMainMenuPlayer.get;
+import org.itson.player.Player;
 import org.itson.player.PlayerManager;
 import org.itson.token.TokenManager;
 import org.itson.token.TokenView;
@@ -17,11 +19,13 @@ import org.itson.token.TokenView;
  * @author oscar
  */
 public class FrmGame extends javax.swing.JFrame {
+
     private PlayerManager playerManager;
     private TokenManager tokenManager;
+    private Player player;
 
     private static FrmGame instance;
-    
+
     /**
      * Creates new form FrmGame
      */
@@ -32,22 +36,24 @@ public class FrmGame extends javax.swing.JFrame {
         this.playerManager.createPlayer("oscar");
         this.playerManager.createPlayer("Aracely");
         this.playerManager.createPlayer("Luis");
-        this.playerManager.createPlayer("Hector");
-        this.playerManager.createPlayer("odkjs");
-        this.playerManager.createPlayer("Daniel");
+//        this.playerManager.createPlayer("Hector");
+//        this.playerManager.createPlayer("Paul");
+//        this.playerManager.createPlayer("Daniel");
+        this.player = player;
         initComponents();
     }
-    
+
     public static FrmGame get() throws IOException {
         if (FrmGame.instance == null) {
             FrmGame.instance = new FrmGame();
         }
-        
+
         return FrmGame.instance;
     }
-    private void showFrmGame(){
-         int option = JOptionPane.showConfirmDialog(this, "Do you want to come back?", "Exit", JOptionPane.YES_NO_OPTION);
-        
+
+    private void showFrmGame() {
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to come back?", "Exit", JOptionPane.YES_NO_OPTION);
+
         if (option == JOptionPane.YES_OPTION) {
             this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             FrmMainMenu.get().setVisible(true);
@@ -56,7 +62,18 @@ public class FrmGame extends javax.swing.JFrame {
             this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         }
     }
+
     public void draw() {
+    }
+
+    // 
+    public void setPlayer(Player player) throws IOException {
+        get().player = player;
+        setPlayerName(get().player);
+    }
+
+    private void setPlayerName(Player player) {
+        lblNamePlayer1.setText(player.getName());
     }
 
     /**
@@ -68,6 +85,15 @@ public class FrmGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPlayer1 = new javax.swing.JLabel();
+        lblPlayer2 = new javax.swing.JLabel();
+        lblPlayer3 = new javax.swing.JLabel();
+        lblPlayer4 = new javax.swing.JLabel();
+        lblNamePlayer1 = new javax.swing.JLabel();
+        lblNamePlayer3 = new javax.swing.JLabel();
+        lblNamePlayer2 = new javax.swing.JLabel();
+        lblNamePlayer4 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,15 +102,59 @@ public class FrmGame extends javax.swing.JFrame {
             }
         });
 
+        lblPlayer1.setText("Player 1: ");
+
+        lblPlayer2.setText("Player 2: ");
+
+        lblPlayer3.setText("Player 3: ");
+
+        lblPlayer4.setText("Player 4: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblPlayer4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNamePlayer4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblPlayer2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNamePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(289, 289, 289)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPlayer1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblNamePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPlayer3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblNamePlayer3)))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer3)
+                    .addComponent(lblNamePlayer3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer2)
+                    .addComponent(lblPlayer4)
+                    .addComponent(lblNamePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNamePlayer4))
+                .addGap(154, 154, 154)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer1)
+                    .addComponent(lblNamePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -92,7 +162,7 @@ public class FrmGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-       TokenView tokenView = this.tokenManager.getRandomTokenView();
+        TokenView tokenView = this.tokenManager.getRandomTokenView();
         if (tokenView != null) {
             this.add(tokenView);
             this.repaint();
@@ -139,5 +209,13 @@ public class FrmGame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblNamePlayer1;
+    private javax.swing.JLabel lblNamePlayer2;
+    private javax.swing.JLabel lblNamePlayer3;
+    private javax.swing.JLabel lblNamePlayer4;
+    private javax.swing.JLabel lblPlayer1;
+    private javax.swing.JLabel lblPlayer2;
+    private javax.swing.JLabel lblPlayer3;
+    private javax.swing.JLabel lblPlayer4;
     // End of variables declaration//GEN-END:variables
 }

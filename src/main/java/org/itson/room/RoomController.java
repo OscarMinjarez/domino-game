@@ -28,7 +28,7 @@ public class RoomController {
         return RoomController.instance;
     }
     
-    public void createRoom() {
+    public void createRoom(int par) {
         this.room = new Room();
     }
     

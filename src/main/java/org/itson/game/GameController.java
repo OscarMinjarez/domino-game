@@ -65,7 +65,7 @@ public class GameController {
     }
 
     public void createRoom() {
-        this.roomController.createRoom();
+        this.roomController.createRoom(2);
     }
 
     public Room getRoom() {

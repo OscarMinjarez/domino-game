@@ -59,6 +59,7 @@ public class FrmRoom extends javax.swing.JFrame {
         frmGame.setVisible(true);
         hiddenWindow();
     }
+    
     private void hiddenWindow() {
         setVisible(false);
     }

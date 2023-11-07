@@ -4,6 +4,7 @@
  */
 package org.itson.engine;
 
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import org.itson.player.Player;
 import org.itson.player.PlayerController;
@@ -13,8 +14,9 @@ import org.itson.player.PlayerController;
  * @author arace
  */
 public class FrmMainMenu extends javax.swing.JFrame {
+
     private static FrmMainMenu instance;
-    
+
     private PlayerController playerController;
 
     /**
@@ -24,20 +26,20 @@ public class FrmMainMenu extends javax.swing.JFrame {
         playerController = PlayerController.get();
         initComponents();
     }
-    
+
     //No se puede instanciar mas veces, y asi no se podran abrir mas ventanas de esta
     public static FrmMainMenu get() {
         if (FrmMainMenu.instance == null) {
             FrmMainMenu.instance = new FrmMainMenu();
         }
-        
+
         return FrmMainMenu.instance;
     }
-    
+
     private void hiddenWindow() {
         setVisible(false);
     }
-    
+
     private void showFrmMainMenuPlayer() {
         if (checkEmptyName()) {
             showAlert("Please, enter a name", "Empty name");
@@ -48,24 +50,26 @@ public class FrmMainMenu extends javax.swing.JFrame {
             frmMainMenuPlayer.setVisible(true);
         }
     }
-    
+
     private boolean checkEmptyName() {
         return txtName.getText().trim().isBlank();
     }
-    
+
     private Player createPlayer(String name) {
         return get().playerController.createPlayer(name);
     }
-    
+
     private void showAlert(String message, String title) {
         JOptionPane.showMessageDialog(
                 get(),
-                message, 
+                message,
                 title,
                 JOptionPane.ERROR_MESSAGE
         );
     }
+
     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

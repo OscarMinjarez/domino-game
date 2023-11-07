@@ -4,6 +4,9 @@
  */
 package org.itson.engine;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.itson.player.Player;
 
@@ -46,7 +49,11 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         frmCreateRoom.setVisible(true);
         hiddenWindow();
     }
-    
+    private void showFrmGame() throws IOException{
+        FrmGame frmGame = FrmGame.get();
+        frmGame.setVisible(true);
+        hiddenWindow();
+    }
     public void setPlayer(Player player) {
         get().player = player;
         setPlayerName(get().player);
@@ -108,6 +115,11 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
 
         btnRoom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnRoom.setText("Unirse a sala");
+        btnRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRoomActionPerformed(evt);
+            }
+        });
 
         btnCreateRoom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnCreateRoom.setText("Crear partida");
@@ -178,6 +190,14 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         showFrmMainMenu();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomActionPerformed
+        try {
+            showFrmGame();
+        } catch (IOException ex) {
+            Logger.getLogger(FrmMainMenuPlayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRoomActionPerformed
 
     /**
      * @param args the command line arguments
