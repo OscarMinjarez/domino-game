@@ -20,7 +20,7 @@ import org.itson.room.Room;
 public class FrmRoom extends javax.swing.JFrame {
 
     private static FrmRoom instance;
-    
+
     private Room room;
     private Player player;
     
@@ -54,7 +54,11 @@ public class FrmRoom extends javax.swing.JFrame {
             this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         }
     }
-    
+    private void showFrmGame() throws IOException{
+        FrmGame frmGame = FrmGame.get();
+        frmGame.setVisible(true);
+        hiddenWindow();
+    }
     private void hiddenWindow() {
         setVisible(false);
     }
@@ -229,7 +233,7 @@ public class FrmRoom extends javax.swing.JFrame {
 
     private void btnGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGameActionPerformed
         try {
-            this.showMAIN();
+            showFrmGame();
         } catch (IOException ex) {
             Logger.getLogger(FrmRoom.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -32,6 +32,7 @@ public class PlayerComponent {
         this.tokens = new ArrayList<>();
         this.avatar = avatar;
         this.tokens = tokens;
+        this.name = name;
     }
 
     public Player getPlayer() {

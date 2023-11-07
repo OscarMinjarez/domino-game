@@ -2,6 +2,8 @@ package org.itson.player;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.itson.model.domain.Avatar;
+import org.itson.token.Token;
 
 /**
  * Esta clase sera el manejador de jugadores
@@ -14,6 +16,7 @@ public class PlayerManager {
     private List<PlayerComponent> playersComponent;
 
     public PlayerManager() {
+        this.playersComponent = new ArrayList<>();
     }
 
     public PlayerManager(List<PlayerComponent> playersComponent) {
@@ -28,16 +31,17 @@ public class PlayerManager {
     }
 
     public void createPlayer(String name) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                this.playersComponent.add(new PlayerComponent());
-            }
-        }
-        if (this.playersComponent.size() == 3) {
-            System.out.println("Players are create");
-        } else {
-            System.out.println("Players are not create");
-        }
+        if (this.playersComponent.size() < 4) {
+        Avatar avatar = new Avatar(); 
+        List<Token> tokens = new ArrayList<>(); 
+
+        PlayerComponent playerComponent = new PlayerComponent(avatar, tokens, name);
+        this.playersComponent.add(playerComponent);
+        System.out.println("Player " + name + " is created.");
+    } else {
+        System.out.println("Players are already created.");
+    }
+
     }
 
     public List<PlayerComponent> getPlayersComponents() {
@@ -51,4 +55,5 @@ public class PlayerManager {
         }
         return players;
     }
+
 }

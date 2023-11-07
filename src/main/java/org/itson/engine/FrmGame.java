@@ -7,6 +7,8 @@ package org.itson.engine;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.itson.player.PlayerManager;
 import org.itson.token.TokenManager;
 import org.itson.token.TokenView;
 
@@ -15,7 +17,7 @@ import org.itson.token.TokenView;
  * @author oscar
  */
 public class FrmGame extends javax.swing.JFrame {
-    
+    private PlayerManager playerManager;
     private TokenManager tokenManager;
 
     private static FrmGame instance;
@@ -26,6 +28,13 @@ public class FrmGame extends javax.swing.JFrame {
     private FrmGame() throws IOException {
         this.tokenManager = TokenManager.get();
         this.tokenManager.generateTokens();
+        this.playerManager = PlayerManager.get();
+        this.playerManager.createPlayer("oscar");
+        this.playerManager.createPlayer("Aracely");
+        this.playerManager.createPlayer("Luis");
+        this.playerManager.createPlayer("Hector");
+        this.playerManager.createPlayer("odkjs");
+        this.playerManager.createPlayer("Daniel");
         initComponents();
     }
     
@@ -36,7 +45,17 @@ public class FrmGame extends javax.swing.JFrame {
         
         return FrmGame.instance;
     }
-    
+    private void showFrmGame(){
+         int option = JOptionPane.showConfirmDialog(this, "Do you want to come back?", "Exit", JOptionPane.YES_NO_OPTION);
+        
+        if (option == JOptionPane.YES_OPTION) {
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            FrmMainMenu.get().setVisible(true);
+            this.dispose();
+        } else {
+            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        }
+    }
     public void draw() {
     }
 
