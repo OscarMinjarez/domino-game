@@ -4,6 +4,7 @@
  */
 package org.itson.engine;
 
+import org.itson.game.GameView;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,14 +49,14 @@ public class FrmRoom extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, "Are you sure to start the game?", "Confirm", JOptionPane.YES_NO_OPTION);
         if(option == JOptionPane.YES_OPTION){
             this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            FrmGame.get().setVisible(true);
+            GameView.get().setVisible(true);
             this.dispose();
         } else {
             this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         }
     }
     private void showFrmGame() throws IOException{
-        FrmGame frmGame = FrmGame.get();
+        GameView frmGame = GameView.get();
         frmGame.setVisible(true);
         hiddenWindow();
     }

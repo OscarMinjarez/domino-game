@@ -1,5 +1,6 @@
 package org.itson.engine;
 
+import org.itson.game.GameView;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         } else {
             hiddenWindow();
             FrmMainMenuPlayer frmMainMenuPlayer = FrmMainMenuPlayer.get();
-            FrmGame frmGame = FrmGame.get();
+            GameView frmGame = GameView.get();
             frmMainMenuPlayer.setPlayer(get().createPlayer(txtName.getText().trim()));
             frmGame.setPlayer(get().createPlayer(txtName.getText().trim()));
             frmMainMenuPlayer.setVisible(true);

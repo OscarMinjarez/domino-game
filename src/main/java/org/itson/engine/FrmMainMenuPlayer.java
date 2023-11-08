@@ -4,6 +4,7 @@
  */
 package org.itson.engine;
 
+import org.itson.game.GameView;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,7 +51,7 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         hiddenWindow();
     }
     private void showFrmGame() throws IOException{
-        FrmGame frmGame = FrmGame.get();
+        GameView frmGame = GameView.get();
         frmGame.setVisible(true);
         hiddenWindow();
     }
