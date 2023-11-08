@@ -36,9 +36,8 @@ public class FrmGame extends javax.swing.JFrame {
         this.playerManager.createPlayer("oscar");
         this.playerManager.createPlayer("Aracely");
         this.playerManager.createPlayer("Luis");
-//        this.playerManager.createPlayer("Hector");
-//        this.playerManager.createPlayer("Paul");
-//        this.playerManager.createPlayer("Daniel");
+
+
         this.player = player;
         initComponents();
     }
@@ -74,6 +73,10 @@ public class FrmGame extends javax.swing.JFrame {
 
     private void setPlayerName(Player player) {
         lblNamePlayer1.setText(player.getName());
+        lblNamePlayer2.setText("oscar");
+        lblNamePlayer3.setText("Aracely");
+        lblNamePlayer4.setText("Luis");
+        
     }
 
     /**
@@ -122,8 +125,8 @@ public class FrmGame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPlayer2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNamePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addComponent(lblNamePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
                 .addGap(289, 289, 289)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,11 +148,12 @@ public class FrmGame extends javax.swing.JFrame {
                     .addComponent(lblPlayer3)
                     .addComponent(lblNamePlayer3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPlayer2)
-                    .addComponent(lblPlayer4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNamePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNamePlayer4))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPlayer2)
+                        .addComponent(lblPlayer4)
+                        .addComponent(lblNamePlayer4)))
                 .addGap(154, 154, 154)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlayer1)

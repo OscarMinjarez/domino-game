@@ -1,6 +1,7 @@
 package org.itson.model.domain;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  * Clase con los atributos del avatar
@@ -8,7 +9,6 @@ import java.awt.Image;
  */
 public class Avatar {
     private Image image;
-
     /**
      * Metodo contructor 
      */
@@ -32,4 +32,10 @@ public class Avatar {
     public void setImage(Image image) {
         this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return "Avatar{" + "image=" + image + '}';
+    }
+    
 }
