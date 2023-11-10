@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package org.itson.game;
 
 import java.io.IOException;
@@ -20,26 +16,14 @@ import org.itson.token.TokenView;
  * @author oscar
  */
 public class GameView extends javax.swing.JFrame {
-
-    private PlayerManager playerManager;
-    private TokenManager tokenManager;
-    private Player player;
-
+    private GameController gameController;
     private static GameView instance;
+    private TokenManager tokenManager;
 
     /**
      * Creates new form FrmGame
      */
     private GameView() throws IOException {
-        this.tokenManager = TokenManager.get();
-        this.tokenManager.generateTokens();
-        this.playerManager = PlayerManager.get();
-        this.playerManager.createPlayer("oscar");
-        this.playerManager.createPlayer("Aracely");
-        this.playerManager.createPlayer("Luis");
-
-
-        this.player = player;
         initComponents();
     }
 
@@ -63,21 +47,22 @@ public class GameView extends javax.swing.JFrame {
         }
     }
 
-    public void draw() {
-    }
 
-    // 
-    public void setPlayer(Player player) throws IOException {
-        get().player = player;
-        setPlayerName(get().player);
-    }
+    public void setPlayer(Player player) {
+    setPlayerName(player);
+}
 
     private void setPlayerName(Player player) {
         lblNamePlayer1.setText(player.getName());
+        //Jugares virtuales temporales 
         lblNamePlayer2.setText("oscar");
         lblNamePlayer3.setText("Aracely");
         lblNamePlayer4.setText("Luis");
-        
+
+    }
+
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
     /**
@@ -177,7 +162,12 @@ public class GameView extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
+        Game game = new Game();
+        TokenManager tokenManager = new TokenManager();
+        GameView gameView = new GameView();
+        GameController gameController = new GameController(tokenManager, gameView, game);
+        gameView.setGameController(gameController);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

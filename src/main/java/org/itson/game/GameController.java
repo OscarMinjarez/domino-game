@@ -24,20 +24,33 @@ public class GameController {
     private static GameController instance;
     private Game game;
     private Board board;
-
+    private PlayerManager playerManager;
+    private TokenManager tokenManager;
+    private Player player;
     private RoomController roomController;
     private PitController pitController;
-    private TokenManager tokenManager;
     private PlayerController playerController;
     private BoardController boardController;
-    private PlayerManager playerManager;
+    private GameView gameView;
 
     private GameController() {
+
+    }
+
+    public GameController(TokenManager tokenManager, GameView gameView, Game game) {
+        this.tokenManager = tokenManager;
         this.roomController = ControllerFactory.getRoomController();
         this.pitController = ControllerFactory.getPitController();
         this.tokenManager = TokenManager.get();
         this.playerController = ControllerFactory.getPlayerController();
         this.boardController = ControllerFactory.getBoardController();
+        this.playerManager = PlayerManager.get();
+        this.playerManager.createPlayer("oscar");
+        this.playerManager.createPlayer("Aracely");
+        this.playerManager.createPlayer("Luis");
+        this.player = player;
+        this.game = game;
+
     }
 
     public static GameController get() {
@@ -126,6 +139,12 @@ public class GameController {
         return this.roomController.getPlayers();
     }
 
+    public void setPlayer(Player player) throws IOException {
+        List<Player> players = game.getPlayers();
+        game.setPlayers(players);
+        gameView.setPlayer(player);
+    }
+
     private boolean checkNumberOfPlayers(List<Player> players) {
         return players.size() <= 4 || players.size() >= 2;
     }
@@ -164,4 +183,6 @@ public class GameController {
     public List<Token> getTokensFromTheBoard() {
         return this.boardController.getTokens();
     }
+
+    
 }

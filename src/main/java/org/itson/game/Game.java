@@ -44,6 +44,14 @@ public class Game {
         this.players.add(player);
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
     @Override
     public String toString() {
         return "Game{" + "board=" + board + ", pit=" + pit + ", players=" + players + '}';
