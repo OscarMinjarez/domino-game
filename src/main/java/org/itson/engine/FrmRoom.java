@@ -246,6 +246,7 @@ public class FrmRoom extends javax.swing.JFrame {
             
             gameController.createPlayer(player.getName());
             
+            gameController.setGameInTheRoom(gameController.getGame());
             gameController.generateTokens();
             gameController.saveTokensInThePit(gameController.getTokens());
             System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
@@ -253,6 +254,12 @@ public class FrmRoom extends javax.swing.JFrame {
             System.out.println("Total players on the game: " + gameController.getPlayers().size());
             System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             MuleToken firstMuleToken = gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers());
+            System.out.println("Biggest mule token: " + firstMuleToken);  
+            
+            for (Player player : gameController.getPlayers()) {
+                System.out.println("Total tokens for " + player.getName() + ": " + player.getTokens().size());
+            }
+            
             System.out.println("Tokens on the board after putting the biggest mule token: ");
             gameController.putTokenOnBoard(firstMuleToken);
             System.out.println("Total tokens on the board: " + gameController.getTokensFromTheBoard().size());
