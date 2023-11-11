@@ -11,8 +11,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import org.itson.game.GameController;
 import org.itson.player.Player;
 import org.itson.room.Room;
+import org.itson.token.MuleToken;
 
 /**
  *
@@ -24,7 +26,7 @@ public class FrmRoom extends javax.swing.JFrame {
 
     private Room room;
     private Player player;
-    
+    private GameController gameController;
     private int maxNumberOfPlayers;
 
     /**
@@ -32,6 +34,7 @@ public class FrmRoom extends javax.swing.JFrame {
      */
     private FrmRoom() {
         initComponents();
+        this.gameController = GameController.get();
     }
     
     private void showFrmCreateRoom() {
@@ -57,6 +60,7 @@ public class FrmRoom extends javax.swing.JFrame {
     }
     private void showFrmGame() throws IOException{
         GameView frmGame = GameView.get();
+        frmGame.setPlayer(player);
         frmGame.setVisible(true);
         hiddenWindow();
     }
@@ -235,7 +239,28 @@ public class FrmRoom extends javax.swing.JFrame {
 
     private void btnGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGameActionPerformed
         try {
+            
+            gameController.createGame();
+            gameController.createBoard();
+            gameController.createPit();
+            
+            gameController.createPlayer(player.getName());
+            
+            gameController.generateTokens();
+            gameController.saveTokensInThePit(gameController.getTokens());
+            System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
+            gameController.dealTokens(gameController.getPlayers(), 7);
+            System.out.println("Total players on the game: " + gameController.getPlayers().size());
+            System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
+            MuleToken firstMuleToken = gameController.getBiggestMuleTokenFromPlayers(gameController.getPlayers());
+            System.out.println("Tokens on the board after putting the biggest mule token: ");
+            gameController.putTokenOnBoard(firstMuleToken);
+            System.out.println("Total tokens on the board: " + gameController.getTokensFromTheBoard().size());
+            System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
+            gameController.setInPlayers(gameController.getPlayers());
             showFrmGame();
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(FrmRoom.class.getName()).log(Level.SEVERE, null, ex);
         }

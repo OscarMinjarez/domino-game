@@ -109,9 +109,6 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="checkTwoPlayers">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
           <Events>
@@ -125,9 +122,6 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="checkThreePlayers">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="3"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -142,9 +136,6 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="checkFourPlayers">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="                       4"/>
           </Properties>
           <Events>
