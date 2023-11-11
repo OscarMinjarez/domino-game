@@ -32,24 +32,13 @@ public class GameController {
     private PlayerController playerController;
     private BoardController boardController;
     private GameView gameView;
-
-    private GameController() {
-
-    }
-
-    public GameController(TokenManager tokenManager, GameView gameView, Game game) {
-        this.tokenManager = tokenManager;
+    
+    public GameController() {
         this.roomController = ControllerFactory.getRoomController();
         this.pitController = ControllerFactory.getPitController();
         this.tokenManager = TokenManager.get();
         this.playerController = ControllerFactory.getPlayerController();
         this.boardController = ControllerFactory.getBoardController();
-        this.playerManager = PlayerManager.get();
-        this.playerManager.createPlayer("oscar");
-        this.playerManager.createPlayer("Aracely");
-        this.playerManager.createPlayer("Luis");
-        this.player = player;
-        this.game = game;
 
     }
 
@@ -139,11 +128,23 @@ public class GameController {
         return this.roomController.getPlayers();
     }
 
-    public void setPlayer(Player player) throws IOException {
-        List<Player> players = game.getPlayers();
-        game.setPlayers(players);
-        gameView.setPlayer(player);
+    public void setInPlayers(List<Player> players) throws IOException {
+    List<Player> existingPlayers = roomController.getPlayers();
+    List<Player> playersToRemove = new ArrayList<>();
+
+    for (Player player : players) {
+        String playerName = player.getName().trim();
+        if (!existingPlayers.stream().anyMatch(existingPlayer -> existingPlayer.getName().trim().equals(playerName))) {
+            throw new IllegalArgumentException("Player " + playerName + " isn't registered in PlayerManager");
+        } else {
+            playersToRemove.add(player);
+            System.out.println("Player set correctly: " + playerName);
+        }
     }
+
+    existingPlayers.removeAll(playersToRemove);
+    game.setPlayers(players);
+}
 
     private boolean checkNumberOfPlayers(List<Player> players) {
         return players.size() <= 4 || players.size() >= 2;

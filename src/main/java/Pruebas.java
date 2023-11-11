@@ -65,6 +65,8 @@ public class Pruebas {
             System.out.println("Total tokens on the board: " + gameController.getTokensFromTheBoard().size());
             System.out.println("Total tokens on the pit: " + gameController.getTokensFromPit().size());
             
+            gameController.setInPlayers(gameController.getPlayers());
+            
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -18,7 +18,7 @@ public class TokenManager {
     private static TokenManager instance;
     private List<TokenComponent> tokensComponents;
     
-    private TokenManager() {
+    public TokenManager() {
         this.tokensComponents = new ArrayList<>();
     }
     

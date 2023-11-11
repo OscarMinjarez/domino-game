@@ -166,7 +166,7 @@ public class GameView extends javax.swing.JFrame {
         Game game = new Game();
         TokenManager tokenManager = new TokenManager();
         GameView gameView = new GameView();
-        GameController gameController = new GameController(tokenManager, gameView, game);
+        GameController gameController = new GameController();
         gameView.setGameController(gameController);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
