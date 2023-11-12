@@ -1,20 +1,16 @@
 package org.itson.engine;
 
-import org.itson.game.GameView;
-import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javax.management.Query.value;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.itson.model.domain.Avatar;
 import org.itson.player.Player;
 import org.itson.player.PlayerController;
-
+import javax.swing.ImageIcon;
+import java.awt.Image;
 /**
  *
  * @author arace
@@ -87,6 +83,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         comboBoxAvatar = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
+        lblImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Domino Master");
@@ -122,7 +119,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel2.setText("Enter name:");
 
-        comboBoxAvatar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "avatar1", "avatar2" }));
+        comboBoxAvatar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avatar1", "Avatar2" }));
         comboBoxAvatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxAvatarActionPerformed(evt);
@@ -139,9 +136,9 @@ public class FrmMainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(btnEnter)
-                .addGap(55, 55, 55)
+                .addGap(58, 58, 58)
                 .addComponent(btnHelp)
                 .addGap(16, 16, 16))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -153,12 +150,15 @@ public class FrmMainMenu extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                             .addComponent(comboBoxAvatar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,16 +173,14 @@ public class FrmMainMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(comboBoxAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnExit)
-                            .addComponent(btnHelp))
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnEnter)
-                        .addGap(33, 33, 33))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExit)
+                    .addComponent(btnHelp)
+                    .addComponent(btnEnter))
+                .addGap(21, 21, 21))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 300));
@@ -204,18 +202,20 @@ public class FrmMainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void comboBoxAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxAvatarActionPerformed
-        //No he logrado que se pongan imagenes en los avatars:(
-        ArrayList<Avatar> avatars = new ArrayList<>();
-        Image image1 = new ImageIcon("src\\main\\resources\\assets\\sprites\\avatar1.png").getImage();
-        Image image2 = new ImageIcon("src\\main\\resources\\assets\\sprites\\avatar2.png").getImage();
-        Avatar avatar1 = new Avatar(image1);
-        Avatar avatar2 = new Avatar(image2);
-        avatars.add(avatar1);
-        avatars.add(avatar2);
-        DefaultComboBoxModel<Avatar> comboBoxModel = new DefaultComboBoxModel<>();
-        comboBoxModel.addElement(avatar1);
-        comboBoxModel.addElement(avatar2);
-
+       Object seleObject = comboBoxAvatar.getSelectedItem();
+       if(seleObject.equals("Avatar1")){
+           JOptionPane.showMessageDialog(null, "Avatar1");
+           ImageIcon avatar1 = new ImageIcon(getClass().getResource("/assets/other/"));
+           ImageIcon icon = new ImageIcon(avatar1.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_DEFAULT));
+           lblImage.setIcon(icon);
+       }else{
+           if(seleObject.equals("Avatar2")){
+               JOptionPane.showMessageDialog(null, "Avatar2");
+           ImageIcon avatar2 = new ImageIcon(getClass().getResource("/assets/other/avatar2.png"));
+           ImageIcon icon1 = new ImageIcon(avatar2.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_DEFAULT));
+           lblImage.setIcon(icon1);
+           }
+       }
     }//GEN-LAST:event_comboBoxAvatarActionPerformed
 
     /**
@@ -265,6 +265,7 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

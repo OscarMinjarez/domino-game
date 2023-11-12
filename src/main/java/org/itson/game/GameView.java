@@ -18,12 +18,13 @@ import org.itson.token.TokenView;
 public class GameView extends javax.swing.JFrame {
     private GameController gameController;
     private static GameView instance;
-    private TokenManager tokenManager;
+    public TokenManager tokenManager;
 
     /**
      * Creates new form FrmGame
      */
     private GameView() throws IOException {
+        this.tokenManager = TokenManager.get(); 
         initComponents();
     }
 
