@@ -43,7 +43,12 @@ public class Token extends Entity {
         this.tokenHorVer = tokenHorVer;
     }
 
+    public void setFaceValues(int value1, int value2) throws IOException {
+        this.faces[0] = new Face(value1);
+        this.faces[1] = new Face(value2);
+    }
 
+    
     public class Face {
 
         private int value;
