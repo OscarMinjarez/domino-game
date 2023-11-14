@@ -46,7 +46,7 @@ public class Pruebas {
             System.out.println(room);
             System.out.println(gameController.getGame());
             gameController.generateTokens();
-            gameController.saveTokensInThePit(gameController.getTokens());
+            gameController.saveTokensInThePit(gameController.getTokensComponents());
             System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
             
             gameController.dealTokens(gameController.getPlayers(), 7);

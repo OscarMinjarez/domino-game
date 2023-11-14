@@ -82,15 +82,15 @@ public class GameController {
         return this.pitController.getPit();
     }
 
-    public void saveTokensInThePit(List<Token> tokens) {
+    public void saveTokensInThePit(List<TokenComponent> tokens) {
         this.pitController.setTokens(tokens);
     }
 
-    public List<Token> getTokensFromPit() {
+    public List<TokenComponent> getTokensFromPit() {
         return this.pitController.getTokens();
     }
 
-    public Token getRandomTokenFromThePit() {
+    public TokenComponent getRandomTokenFromThePit() {
         return this.pitController.getRandomToken();
     }
 
@@ -102,8 +102,8 @@ public class GameController {
         this.tokenManager.generateTokens();
     }
 
-    public List<Token> getTokens() {
-        return this.tokenManager.getTokens();
+    public List<TokenComponent> getTokensComponents() {
+        return this.tokenManager.getTokensComponents();
     }
 
     public void dealTokens(List<Player> players, int quantity) {

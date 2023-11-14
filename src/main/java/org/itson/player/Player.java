@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.itson.model.domain.Avatar;
 import org.itson.token.Token;
+import org.itson.token.TokenComponent;
 
 /**
  * Clase que representa a un jugador en el contexto de un juego. Un jugador tiene un avatar y puede
@@ -12,7 +13,7 @@ import org.itson.token.Token;
  */
 public class Player {
     private Avatar avatar;
-    private List<Token> tokens;
+    private List<TokenComponent> tokens;
     private String name;
     
      /**
@@ -28,7 +29,7 @@ public class Player {
      * @param tokens Un arreglo de tokens que pertenecen al jugador.
      * @param name Nombre del jugador
      */
-    public Player(Avatar avatar, List<Token> tokens, String name) {
+    public Player(Avatar avatar, List<TokenComponent> tokens, String name) {
         this.tokens = new ArrayList<>();
         this.avatar = avatar;
         this.tokens = tokens;
@@ -53,7 +54,7 @@ public class Player {
      * Obtiene la colección de tokens que pertenecen al jugador.
      * @return Un arreglo de tokens que pertenecen al jugador.
      */
-    public List<Token> getTokens() {
+    public List<TokenComponent> getTokens() {
         return tokens;
     }
 
@@ -61,7 +62,7 @@ public class Player {
      * Establece la colección de tokens que pertenecen al jugador.
      * @param tokens Un arreglo de tokens que se asociarán al jugador.
      */
-    public void setTokens(List<Token> tokens) {
+    public void setTokens(List<TokenComponent> tokens) {
         this.tokens = tokens;
     }
     
