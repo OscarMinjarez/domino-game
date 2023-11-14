@@ -15,21 +15,22 @@ import org.itson.utils.Utils;
  * @author oscar
  */
 public class TokenManager {
+
     private static TokenManager instance;
     private List<TokenComponent> tokensComponents;
-    
+
     public TokenManager() {
         this.tokensComponents = new ArrayList<>();
     }
-    
+
     public static TokenManager get() {
         if (TokenManager.instance == null) {
             TokenManager.instance = new TokenManager();
         }
-        
+
         return TokenManager.instance;
     }
-    
+
     public void generateTokens() throws IOException {
         for (int i = 0; i <= 6; i++) {
             for (int j = i; j <= 6; j++) {
@@ -43,46 +44,36 @@ public class TokenManager {
             System.out.println("We can't create the tokens");
         }
     }
-    
+
     public TokenView getRandomTokenView() {
         int index = Utils.generateRandomNumber(0, this.tokensComponents.size());
-        
+
         return this.tokensComponents.get(index).getTokenView();
     }
-    
+
     public List<TokenComponent> getTokensComponents() {
         return this.tokensComponents;
     }
-    
-    public List<Token> getTokens() {
-        List<Token> tokens = new ArrayList<>();
-        
-        for (TokenComponent tokenComponent : this.tokensComponents) {
-            tokens.add(tokenComponent.getToken());
-        }
-        
-        return tokens;
-    }
-    
+
     public MuleToken getBiggestMuleToken(List<MuleToken> muleTokens) {
         MuleToken biggestToken = null;
         MuleToken prevToken = null;
-        
+
         for (MuleToken muleToken : muleTokens) {
             MuleToken nextToken = muleToken;
             biggestToken = this.compareTwoMuleTokens(prevToken, nextToken);
             prevToken = nextToken;
         }
-        
+
         return biggestToken;
     }
-    
+
     public MuleToken getBiggestMuleTokenPerPlayer(Player player) {
         MuleToken biggestToken = null;
         MuleToken prevToken = null;
 
-        for (Token token : player.getTokens()) {
-            if (token instanceof MuleToken nextToken) {
+        for (TokenComponent token : player.getTokens()) {
+            if (token.getToken() instanceof MuleToken nextToken) {
                 biggestToken = this.compareTwoMuleTokens(prevToken, nextToken);
                 prevToken = nextToken;
             }
@@ -92,19 +83,26 @@ public class TokenManager {
     }
 
     private MuleToken compareTwoMuleTokens(MuleToken prevToken, MuleToken nextToken) {
-        if (prevToken == null) return nextToken;
-        if (nextToken == null) return prevToken;
-        if (prevToken.getValue() >= nextToken.getValue()) return prevToken;
+        if (prevToken == null) {
+            return nextToken;
+        }
+        if (nextToken == null) {
+            return prevToken;
+        }
+        if (prevToken.getValue() >= nextToken.getValue()) {
+            return prevToken;
+        }
         return nextToken;
     }
-    
+
+    //Cambiar metodo a playerComponent
     public Token removeTokenPerThePlayer(List<Player> players, Token token) {
         for (Player player : players) {
             if (player.getTokens().remove(token)) {
                 return token;
             }
         }
-        
+
         return null;
     }
 }

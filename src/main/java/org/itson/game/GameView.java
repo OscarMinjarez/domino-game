@@ -1,13 +1,9 @@
 package org.itson.game;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.itson.engine.FrmMainMenu;
-import static org.itson.engine.FrmMainMenuPlayer.get;
 import org.itson.player.Player;
-import org.itson.player.PlayerManager;
 import org.itson.token.TokenManager;
 import org.itson.token.TokenView;
 

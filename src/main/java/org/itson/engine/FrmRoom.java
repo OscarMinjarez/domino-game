@@ -248,7 +248,7 @@ public class FrmRoom extends javax.swing.JFrame {
             
             gameController.setGameInTheRoom(gameController.getGame());
             gameController.generateTokens();
-            gameController.saveTokensInThePit(gameController.getTokens());
+            gameController.saveTokensInThePit(gameController.getTokensComponents());
             System.out.println("Total tokens generated on the pit: " + gameController.getTokensFromPit().size());
             gameController.dealTokens(gameController.getPlayers(), 7);
             System.out.println("Total players on the game: " + gameController.getPlayers().size());

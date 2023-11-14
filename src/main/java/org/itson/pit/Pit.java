@@ -3,7 +3,7 @@ package org.itson.pit;
 
 import java.util.List;
 import org.itson.model.domain.Entity;
-import org.itson.token.Token;
+import org.itson.token.TokenComponent;
 
 /**
  * Clase que representa un pozo (Pit) en un mundo virtual. Un pozo es una entidad que puede contener
@@ -12,7 +12,7 @@ import org.itson.token.Token;
  */
 
 public class Pit extends Entity {
-    private List<Token> tokens;
+    private List<TokenComponent> tokens;
     
      /**
      * Constructor por defecto de la clase Pit. Inicializa un pozo sin tokens.
@@ -24,7 +24,7 @@ public class Pit extends Entity {
      * Constructor de la clase Pit que permite especificar los tokens iniciales contenidos en el pozo.
      * @param tokens Un arreglo de tokens que se colocarán en el pozo.
      */
-    public Pit(List<Token> tokens) {
+    public Pit(List<TokenComponent> tokens) {
         this.tokens = tokens;
     }
     
@@ -32,7 +32,7 @@ public class Pit extends Entity {
      * Obtiene los tokens contenidos en el pozo.
      * @return Un arreglo de tokens en el pozo.
      */
-    public List<Token> getTokens() {
+    public List<TokenComponent> getTokens() {
         return tokens;
     }
     
@@ -40,7 +40,7 @@ public class Pit extends Entity {
      * Establece los tokens contenidos en el pozo.
      * @param tokens Un arreglo de tokens que se colocarán en el pozo.
      */
-    public void setTokens(List<Token> tokens) {
+    public void setTokens(List<TokenComponent> tokens) {
         this.tokens = tokens;
     }
     
@@ -48,7 +48,7 @@ public class Pit extends Entity {
         return this.tokens.size();
     }
     
-    public Token removeToken(int index) { 
+    public TokenComponent removeToken(int index) { 
         return this.tokens.remove(index);
     }
 
