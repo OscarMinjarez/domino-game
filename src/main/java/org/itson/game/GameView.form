@@ -64,7 +64,7 @@
                   <Component id="lblPlayer3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblNamePlayer3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <EmptySpace pref="127" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblNamePlayer2" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -73,7 +73,7 @@
                       <Component id="lblNamePlayer4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPlayer1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblNamePlayer1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
@@ -88,6 +88,10 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Player 1: "/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPlayer1MouseClicked"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPlayer1MousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPlayer2">
       <Properties>
@@ -98,6 +102,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Player 3: "/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPlayer3MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPlayer4">
       <Properties>

@@ -22,12 +22,12 @@ public class TokenView extends JPanel{
     private int faceHeight = 32 * 3;
     
     private Dimension tokenSize = new Dimension(this.faceWidth, this.faceHeight);
-    
+
     public TokenView(Token token) {
         this.face1 = token.getFaces()[0].getImage();
         this.face2 = token.getFaces()[1].getImage();
         setSize(this.tokenSize); // variable de las dimensiones
-        setPreferredSize(this.tokenSize);
+        //setPreferredSize(this.tokenSize);
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -47,6 +47,7 @@ public class TokenView extends JPanel{
                     // Aquí puedes restaurar la posición de la ficha a su ubicación original.
                     // setLocation(startX, startY);
                     isDragging = false;
+                    System.out.println("Posicion X "+startX + "" + "Posicion Y" + startY);
                 }
             }
         });

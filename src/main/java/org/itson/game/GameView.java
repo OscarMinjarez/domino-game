@@ -1,9 +1,12 @@
 package org.itson.game;
 
 import java.io.IOException;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.itson.engine.FrmMainMenu;
+import static org.itson.engine.ModelFactory.getPlayer;
 import org.itson.player.Player;
+import org.itson.token.TokenComponent;
 import org.itson.token.TokenManager;
 import org.itson.token.TokenView;
 
@@ -12,15 +15,15 @@ import org.itson.token.TokenView;
  * @author oscar
  */
 public class GameView extends javax.swing.JFrame {
+
     private GameController gameController;
     private static GameView instance;
     public TokenManager tokenManager;
-
     /**
      * Creates new form FrmGame
      */
     private GameView() throws IOException {
-        this.tokenManager = TokenManager.get(); 
+        this.tokenManager = TokenManager.get();
         initComponents();
     }
 
@@ -44,20 +47,18 @@ public class GameView extends javax.swing.JFrame {
         }
     }
 
-
     public void setPlayer(Player player) {
-    setPlayerName(player);
-}
+        setPlayerName(player);
+    }
 
     private void setPlayerName(Player player) {
         lblNamePlayer1.setText(player.getName());
-        
+
     }
 
 //    public void setGameController(GameController gameController) {
 //        this.gameController = gameController;
 //    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,10 +86,23 @@ public class GameView extends javax.swing.JFrame {
         });
 
         lblPlayer1.setText("Player 1: ");
+        lblPlayer1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPlayer1MouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblPlayer1MousePressed(evt);
+            }
+        });
 
         lblPlayer2.setText("Player 2: ");
 
         lblPlayer3.setText("Player 3: ");
+        lblPlayer3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPlayer3MouseClicked(evt);
+            }
+        });
 
         lblPlayer4.setText("Player 4: ");
 
@@ -126,14 +140,14 @@ public class GameView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlayer3)
                     .addComponent(lblNamePlayer3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNamePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblPlayer2)
                         .addComponent(lblPlayer4)
                         .addComponent(lblNamePlayer4)))
-                .addGap(154, 154, 154)
+                .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPlayer1)
                     .addComponent(lblNamePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,10 +161,32 @@ public class GameView extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         TokenView tokenView = this.tokenManager.getRandomTokenView();
         if (tokenView != null) {
+            // Obtiene las coordenadas actuales del mouse en relación con el formulario
+            int newX = evt.getX();
+            int newY = evt.getY();
+
+            // Establece la ubicación de la ficha en las nuevas coordenadas
+            tokenView.setLocation(newX, newY);
+
+            // Agrega la ficha al formulario
             this.add(tokenView);
+
+            // Vuelve a pintar el formulario
             this.repaint();
         }
     }//GEN-LAST:event_formMouseClicked
+
+    private void lblPlayer1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPlayer1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblPlayer1MousePressed
+
+    private void lblPlayer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPlayer1MouseClicked
+
+    }//GEN-LAST:event_lblPlayer1MouseClicked
+
+    private void lblPlayer3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPlayer3MouseClicked
+
+    }//GEN-LAST:event_lblPlayer3MouseClicked
 
     /**
      * @param args the command line arguments
