@@ -6,11 +6,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import org.itson.model.domain.Avatar;
+
 import org.itson.player.Player;
 import org.itson.player.PlayerController;
 import javax.swing.ImageIcon;
 import java.awt.Image;
+import java.util.Hashtable;
+import org.itson.engine.JComboBoxRender;
 /**
  *
  * @author arace
@@ -19,13 +21,26 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
     private static FrmMainMenu instance;
     private PlayerController playerController;
+    Hashtable<Object, ImageIcon> mAvatar;
+    int width = 40;
+    int height = 40;
+    private String amongUSRed = "/assets/other/avatar1.png";
+    private String amongUSOrange = "/assets/other/avatar2.png";
+    private String amongUSBlue = "/assets/other/avatar3.png";
+    private String amongUSPink = "/assets/other/avatar4.png";
 
     /**
      * Creates new form FrmMainMenu
      */
     private FrmMainMenu() {
-        playerController = PlayerController.get();
         initComponents();
+        playerController = PlayerController.get();
+        mAvatar = new Hashtable<>();
+        this.setTitle("Among us Dominos");
+        this.setSize(711, 400);
+        this.setLocationRelativeTo(null);
+        initCombo();
+        
     }
 
     public static FrmMainMenu get() {
@@ -70,30 +85,82 @@ public class FrmMainMenu extends javax.swing.JFrame {
         );
     }
 
+    private void initCombo() {
+        comboAvatar.addItem("Red");
+        comboAvatar.addItem("Orange");
+        comboAvatar.addItem("Blue");
+        comboAvatar.addItem("Pink");
+        mAvatar.put("Red", getIcono(amongUSRed));
+        mAvatar.put("Orange", getIcono(amongUSOrange));
+        mAvatar.put("Blue", getIcono(amongUSBlue));
+        mAvatar.put("Pink", getIcono(amongUSPink));
+        JComboBoxRender mRender = new JComboBoxRender(mAvatar);
+        comboAvatar.setRenderer(mRender);
+    }
+
+    public ImageIcon getIcono(String path) {
+        return new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage()
+                .getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        btnEnter = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        comboBoxAvatar = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        lblImage = new javax.swing.JLabel();
+        lblEnterYourName = new javax.swing.JLabel();
+        comboAvatar = new javax.swing.JComboBox<>();
+        lblTitle = new javax.swing.JLabel();
+        lblSelectYourAvatar = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
+        btnEnter = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
+        lblbackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Domino Master");
+        setMinimumSize(new java.awt.Dimension(711, 400));
+        setPreferredSize(new java.awt.Dimension(711, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/help.png"))); // NOI18N
+        btnHelp.setBorderPainted(false);
+        btnHelp.setContentAreaFilled(false);
+        getContentPane().add(btnHelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel1.setText("Domino Master");
+        lblEnterYourName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/EnterYourName.png"))); // NOI18N
+        getContentPane().add(lblEnterYourName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+
+        comboAvatar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboAvatarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(comboAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 250, 50));
+
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/AmongUSDomino.png"))); // NOI18N
+        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
+        lblSelectYourAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/SelectYourAvatar.png"))); // NOI18N
+        getContentPane().add(lblSelectYourAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
+
+        btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/Boton.png"))); // NOI18N
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+
+        btnEnter.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/btnStartGame.png"))); // NOI18N
+        btnEnter.setBorderPainted(false);
+        btnEnter.setContentAreaFilled(false);
+        btnEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEnter, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 100, 70));
 
         txtName.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -101,89 +168,10 @@ public class FrmMainMenu extends javax.swing.JFrame {
                 txtNameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 250, 50));
 
-        btnEnter.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnEnter.setText("Join");
-        btnEnter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnterActionPerformed(evt);
-            }
-        });
-
-        btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
-
-        btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnHelp.setText("Ayuda");
-
-        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
-        jLabel2.setText("Enter name:");
-
-        comboBoxAvatar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avatar1", "Avatar2" }));
-        comboBoxAvatar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxAvatarActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
-        jLabel3.setText("Select Avatar:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(btnEnter)
-                .addGap(58, 58, 58)
-                .addComponent(btnHelp)
-                .addGap(16, 16, 16))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                            .addComponent(comboBoxAvatar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(comboBoxAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExit)
-                    .addComponent(btnHelp)
-                    .addComponent(btnEnter))
-                .addGap(21, 21, 21))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 300));
+        lblbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/fondo.jpg"))); // NOI18N
+        getContentPane().add(lblbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 400));
 
         pack();
         setLocationRelativeTo(null);
@@ -195,28 +183,17 @@ public class FrmMainMenu extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         try {
+            String playerName = txtName.getText().trim();
+            String avatar = comboAvatar.getSelectedItem().toString();
             showFrmMainMenuPlayer();
         } catch (IOException ex) {
             Logger.getLogger(FrmMainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEnterActionPerformed
 
-    private void comboBoxAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxAvatarActionPerformed
-       Object seleObject = comboBoxAvatar.getSelectedItem();
-       if(seleObject.equals("Avatar1")){
-           JOptionPane.showMessageDialog(null, "Avatar1");
-           ImageIcon avatar1 = new ImageIcon(getClass().getResource("/assets/other/"));
-           ImageIcon icon = new ImageIcon(avatar1.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_DEFAULT));
-           lblImage.setIcon(icon);
-       }else{
-           if(seleObject.equals("Avatar2")){
-               JOptionPane.showMessageDialog(null, "Avatar2");
-           ImageIcon avatar2 = new ImageIcon(getClass().getResource("/assets/other/avatar2.png"));
-           ImageIcon icon1 = new ImageIcon(avatar2.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_DEFAULT));
-           lblImage.setIcon(icon1);
-           }
-       }
-    }//GEN-LAST:event_comboBoxAvatarActionPerformed
+    private void comboAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAvatarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboAvatarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,12 +237,11 @@ public class FrmMainMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnEnter;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHelp;
-    public javax.swing.JComboBox<String> comboBoxAvatar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblImage;
+    private javax.swing.JComboBox<String> comboAvatar;
+    private javax.swing.JLabel lblEnterYourName;
+    private javax.swing.JLabel lblSelectYourAvatar;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblbackground;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

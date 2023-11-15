@@ -2,7 +2,7 @@ package org.itson.player;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.itson.model.domain.Avatar;
+
 import org.itson.token.Token;
 
 /**
@@ -13,7 +13,6 @@ public class PlayerComponent {
 
     private PlayerController playerController;
     private Player player;
-    private Avatar avatar;
     private List<Token> tokens;
     private String name;
 
@@ -28,9 +27,9 @@ public class PlayerComponent {
      * @param tokens Un arreglo de tokens que pertenecen al jugador.
      * @param name Nombre del jugador
      */
-    public PlayerComponent(Avatar avatar, List<Token> tokens, String name) {
+    public PlayerComponent( List<Token> tokens, String name) {
         this.tokens = new ArrayList<>();
-        this.avatar = avatar;
+      
         this.tokens = tokens;
         this.name = name;
     }
@@ -41,7 +40,9 @@ public class PlayerComponent {
 
     @Override
     public String toString() {
-        return "PlayerComponent{" + "playerController=" + playerController + ", player=" + player + ", avatar=" + avatar + ", tokens=" + tokens + ", name=" + name + '}';
+        return "PlayerComponent{" + "playerController=" + playerController + ", player=" + player + ", tokens=" + tokens + ", name=" + name + '}';
     }
+
+    
 
 }

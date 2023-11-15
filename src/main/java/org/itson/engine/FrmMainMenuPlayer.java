@@ -81,13 +81,13 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnExit = new javax.swing.JButton();
-        btnHelp = new javax.swing.JButton();
         btnRoom = new javax.swing.JButton();
         btnCreateRoom = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        lblPlayer = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
+        lblBakcround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -97,84 +97,54 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel1.setText("Bienvenido:");
-
-        btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-
-        btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnHelp.setText("Ayuda");
-
         btnRoom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnRoom.setText("Unirse a sala");
+        btnRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/btnjoingame.png"))); // NOI18N
+        btnRoom.setBorderPainted(false);
+        btnRoom.setContentAreaFilled(false);
         btnRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRoomActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 90, -1));
 
         btnCreateRoom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnCreateRoom.setText("Crear partida");
+        btnCreateRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/creaR0m.png"))); // NOI18N
+        btnCreateRoom.setBorderPainted(false);
+        btnCreateRoom.setContentAreaFilled(false);
         btnCreateRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateRoomActionPerformed(evt);
             }
         });
+        getContentPane().add(btnCreateRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 90, 40));
 
-        lblName.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/help.png"))); // NOI18N
+        btnHelp.setBorderPainted(false);
+        btnHelp.setContentAreaFilled(false);
+        getContentPane().add(btnHelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHelp)
-                .addGap(16, 16, 16))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblName))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(135, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblName))
-                .addGap(61, 61, 61)
-                .addComponent(btnRoom)
-                .addGap(18, 18, 18)
-                .addComponent(btnCreateRoom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExit)
-                    .addComponent(btnHelp))
-                .addGap(21, 21, 21))
-        );
+        btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/Boton.png"))); // NOI18N
+        btnExit.setContentAreaFilled(false);
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 300));
+        lblPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/player.png"))); // NOI18N
+        getContentPane().add(lblPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+
+        lblName.setBackground(new java.awt.Color(255, 255, 255));
+        lblName.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 36)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 180, 40));
+
+        lblBakcround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/frmMainMenuPlayer (1).png"))); // NOI18N
+        getContentPane().add(lblBakcround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -241,8 +211,8 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnRoom;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblBakcround;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPlayer;
     // End of variables declaration//GEN-END:variables
 }

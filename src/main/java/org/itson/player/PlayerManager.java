@@ -2,7 +2,7 @@ package org.itson.player;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.itson.model.domain.Avatar;
+
 import org.itson.token.Token;
 
 /**
@@ -32,10 +32,9 @@ public class PlayerManager {
 
     public void createPlayer(String name) {
         if (this.playersComponent.size() < 4) {
-        Avatar avatar = new Avatar(); 
         List<Token> tokens = new ArrayList<>(); 
 
-        PlayerComponent playerComponent = new PlayerComponent(avatar, tokens, name);
+        PlayerComponent playerComponent = new PlayerComponent( tokens, name);
         this.playersComponent.add(playerComponent);
         System.out.println("Player " + name + " is created.");
     } else {

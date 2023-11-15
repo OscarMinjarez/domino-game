@@ -124,13 +124,14 @@ public class FrmRoom extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         btnGame = new javax.swing.JButton();
+        lblWelcome = new javax.swing.JLabel();
         lblPlayersConnected = new javax.swing.JLabel();
         numberOfPlayersConnected = new javax.swing.JLabel();
+        lbl = new javax.swing.JLabel();
+        lblAvatar = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -140,98 +141,54 @@ public class FrmRoom extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
-
-        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel1.setText("Bienvenido a la sala");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnExit.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/Boton.png"))); // NOI18N
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, -1, -1));
 
         btnHelp.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        btnHelp.setText("Ayuda");
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/help.png"))); // NOI18N
+        btnHelp.setBorderPainted(false);
+        btnHelp.setContentAreaFilled(false);
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, -1, -1));
 
         btnGame.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnGame.setText("Iniciar Partida");
+        btnGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/btnStartGame.png"))); // NOI18N
+        btnGame.setBorderPainted(false);
+        btnGame.setContentAreaFilled(false);
         btnGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGameActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 122, 68));
 
-        lblPlayersConnected.setText("jugadores conectados: ");
+        lblWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/welcometotheroom.png"))); // NOI18N
+        getContentPane().add(lblWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(73, 73, 73))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(btnExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHelp)
-                .addGap(16, 16, 16))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(btnGame, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(lblPlayersConnected)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numberOfPlayersConnected)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPlayersConnected)
-                    .addComponent(numberOfPlayersConnected))
-                .addGap(39, 39, 39)
-                .addComponent(btnGame)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExit)
-                    .addComponent(btnHelp))
-                .addGap(21, 21, 21))
-        );
+        lblPlayersConnected.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/conectedPlayers.png"))); // NOI18N
+        getContentPane().add(lblPlayersConnected, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 4, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 4, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        numberOfPlayersConnected.setBackground(new java.awt.Color(255, 255, 255));
+        numberOfPlayersConnected.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        getContentPane().add(numberOfPlayersConnected, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 210, 50));
+
+        lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/other/fondoRoom.jpg"))); // NOI18N
+        getContentPane().add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
+        getContentPane().add(lblAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -282,6 +239,10 @@ public class FrmRoom extends javax.swing.JFrame {
         showFrmCreateRoom();
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHelpActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -321,10 +282,11 @@ public class FrmRoom extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGame;
     private javax.swing.JButton btnHelp;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl;
+    private javax.swing.JLabel lblAvatar;
     private javax.swing.JLabel lblPlayersConnected;
+    private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel numberOfPlayersConnected;
     // End of variables declaration//GEN-END:variables
 }

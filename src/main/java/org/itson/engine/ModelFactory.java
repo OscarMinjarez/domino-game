@@ -6,7 +6,7 @@ package org.itson.engine;
 
 import org.itson.board.Board;
 import org.itson.game.Game;
-import org.itson.model.domain.Avatar;
+
 import org.itson.model.domain.Rule;
 import org.itson.pit.Pit;
 import org.itson.player.Player;
@@ -23,10 +23,7 @@ public class ModelFactory {
 
     }
 
-    public static Avatar getAvatar() {
-        //return getAvatar();
-        return new Avatar();
-    }
+ 
 
     public static Board getBoard() {
         return new Board();
