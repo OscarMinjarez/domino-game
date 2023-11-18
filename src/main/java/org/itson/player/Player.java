@@ -1,5 +1,6 @@
 package org.itson.player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.itson.model.domain.Avatar;
@@ -11,7 +12,7 @@ import org.itson.token.TokenComponent;
  * poseer una colección de tokens
  * @author arace
  */
-public class Player {
+public class Player implements Serializable {
     private Avatar avatar;
     private List<TokenComponent> tokens;
     private String name;

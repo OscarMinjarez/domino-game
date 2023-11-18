@@ -4,6 +4,7 @@
  */
 package org.itson.engine;
 
+import client.Client;
 import org.itson.game.GameView;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -193,11 +194,15 @@ public class FrmMainMenuPlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomActionPerformed
-        try {
-            showFrmGame();
-        } catch (IOException ex) {
-            Logger.getLogger(FrmMainMenuPlayer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Client client = Client.get();
+
+
+
+//        try {
+//            showFrmGame();
+//        } catch (IOException ex) {
+//            Logger.getLogger(FrmMainMenuPlayer.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_btnRoomActionPerformed
 
     /**

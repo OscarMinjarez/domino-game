@@ -4,11 +4,14 @@
  */
 package org.itson.engine;
 
+
+import client.Client;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import org.itson.player.Player;
 import org.itson.room.RoomController;
+import server.Server;
 
 /**
  *
@@ -45,7 +48,10 @@ public class FrmCreateRoom extends javax.swing.JFrame {
     
     private void showFrmRoom() {
         FrmRoom frmRoom = FrmRoom.get();
-        
+        Server server= new Server();
+        server.start();
+        Client client = Client.get();
+        client.sendServer(client);
         roomController.createRoom(numberOfPlayers);
         frmRoom.setRoom(this.roomController.getRoom());
         frmRoom.setMaxNumberOfPlayers(this.numberOfPlayers);
